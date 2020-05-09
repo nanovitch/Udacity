@@ -7,7 +7,7 @@ public class Knight extends Piece {
 	}
 	
 	// to correct
-	public boolean isValideMove(Position newPosition, Board board){
+	/*public boolean isValideMove(Position newPosition, Board board){
 		
 		// debug
 		System.out.println("KNIGHT");
@@ -27,6 +27,6 @@ public class Knight extends Piece {
 		// debug end
 		
 		return ( (newPosition.isInBoardMove()) && (kindOfMove == 'C') && (pieceToEat == null || pieceToEat.color != this.color) );
-	}
+	}*/
 
 }
