@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_4nsmEI8YEeqxdaVRg5sR4w" name="uml">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_5Cr48I8YEeqxdaVRg5sR4w">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ug4tII8jEeqRaNE1w_Nwmw" name="Structural">
+    <generalization xmi:type="uml:Generalization" xmi:id="_DaziUI8kEeqRaNE1w_Nwmw" general="_6Fy6wI8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_yejckI8jEeqRaNE1w_Nwmw" name="Behavioral">
+    <generalization xmi:type="uml:Generalization" xmi:id="_EzhBsI8kEeqRaNE1w_Nwmw" general="_6Fy6wI8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6Fy6wI8jEeqRaNE1w_Nwmw" name="Diagram"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Gl3JEI8kEeqRaNE1w_Nwmw" name="Class">
+    <generalization xmi:type="uml:Generalization" xmi:id="_eNUGEI8lEeqRaNE1w_Nwmw" general="_ug4tII8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LtpiQI8kEeqRaNE1w_Nwmw" name="Component">
+    <generalization xmi:type="uml:Generalization" xmi:id="_f_kt4I8lEeqRaNE1w_Nwmw" general="_ug4tII8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_OO4I4I8kEeqRaNE1w_Nwmw" name="Composite">
+    <generalization xmi:type="uml:Generalization" xmi:id="_hBYwMI8lEeqRaNE1w_Nwmw" general="_ug4tII8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_SjoioI8kEeqRaNE1w_Nwmw" name="Deployment">
+    <generalization xmi:type="uml:Generalization" xmi:id="_h8BzgI8lEeqRaNE1w_Nwmw" general="_ug4tII8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZVUR0I8kEeqRaNE1w_Nwmw" name="Package">
+    <generalization xmi:type="uml:Generalization" xmi:id="_i47goI8lEeqRaNE1w_Nwmw" general="_ug4tII8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_bTE_AI8kEeqRaNE1w_Nwmw" name="Object">
+    <generalization xmi:type="uml:Generalization" xmi:id="_oxYhwI8lEeqRaNE1w_Nwmw" general="_ug4tII8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_fVQbAI8kEeqRaNE1w_Nwmw" name="Profile">
+    <generalization xmi:type="uml:Generalization" xmi:id="_pqukkI8lEeqRaNE1w_Nwmw" general="_ug4tII8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_qLgL0I8kEeqRaNE1w_Nwmw" name="Activity">
+    <generalization xmi:type="uml:Generalization" xmi:id="_sF938I8lEeqRaNE1w_Nwmw" general="_yejckI8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_sLbcMI8kEeqRaNE1w_Nwmw" name="Communication">
+    <generalization xmi:type="uml:Generalization" xmi:id="_tCa5II8lEeqRaNE1w_Nwmw" general="_yejckI8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wDAKsI8kEeqRaNE1w_Nwmw" name="Interaction">
+    <generalization xmi:type="uml:Generalization" xmi:id="_t4V0gI8lEeqRaNE1w_Nwmw" general="_yejckI8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_25PpwI8kEeqRaNE1w_Nwmw" name="Sequence">
+    <generalization xmi:type="uml:Generalization" xmi:id="_uucWEI8lEeqRaNE1w_Nwmw" general="_yejckI8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5A550I8kEeqRaNE1w_Nwmw" name="State">
+    <generalization xmi:type="uml:Generalization" xmi:id="_v3QYQI8lEeqRaNE1w_Nwmw" general="_yejckI8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_-AVoQI8kEeqRaNE1w_Nwmw" name="Timing">
+    <generalization xmi:type="uml:Generalization" xmi:id="_wn2HsI8lEeqRaNE1w_Nwmw" general="_yejckI8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BTEkUI8lEeqRaNE1w_Nwmw" name="Use Case">
+    <generalization xmi:type="uml:Generalization" xmi:id="_xaCZoI8lEeqRaNE1w_Nwmw" general="_yejckI8jEeqRaNE1w_Nwmw"/>
+  </packagedElement>
+</uml:Model>
