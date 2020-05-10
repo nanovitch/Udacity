@@ -2,14 +2,14 @@ package ca.udacity.oopInJava.chessGame;
 
 public class Board {
 	
-	private Piece[][] board;
+	private final Piece[][] board;
 	
 	Board(){
 		// Setup an empty board
 		this.board = new Piece[8][8];
 	}
 	
-	public void boardSetup() {
+	protected void boardSetup() {
 		
 			// white pieces <=> color = 0
 			board[7][0]= new Rock(new Position("a1"), 0); board[7][7]= new Rock(new Position("h1"), 0);
@@ -34,15 +34,15 @@ public class Board {
 		
 	}
 	
-	public Piece getThePieceOnBoard(Position position) {
+	public Piece getThePieceOnBoard(final Position position) {
 		return board[position.getRawRow()][position.getRawCol()];
 	}
 	
-	public void setThePieceOnBoard(Position position, Piece piece) {
+	public void setThePieceOnBoard(final Position position, final Piece piece) {
 		board[position.getRawRow()][position.getRawCol()] = piece;
 	}
 		
-	public boolean play(Position source, Position dest) {
+	public boolean play(final Position source, final Position dest) {
 		
 		Piece pieceToMove = board[source.getRawRow()][source.getRawCol()];
 		
@@ -84,7 +84,7 @@ public class Board {
 	}
 	
 	//'D': diagonal move, 'V': vertical move, 'H': horizental move
-	public boolean isThisPathClear(Position source, Position dest) {
+	public boolean isThisPathClear(final Position source, final Position dest) {
 		
 		Piece pieceSrc = this.getThePieceOnBoard(source);
 		Piece pieceDest = this.getThePieceOnBoard(dest);
@@ -93,10 +93,11 @@ public class Board {
 		assert(pieceSrc != null):"ABNORMAL CALL!!!";
 		// debug end
 		
-		boolean isOtherReqMeet = dest.isInBoardMove() && (pieceDest == null || pieceDest.color != pieceSrc.color);
-		if (this.getThePieceOnBoard(source).getName().equals("knight")) return isOtherReqMeet;
+		boolean isOtherReqMeet = dest.isInBoardMove() && (pieceDest == null || pieceDest.getColor() != pieceSrc.getColor());
 		
-		char kindOfMove = source.kindOfMove(dest);
+		if (this.getThePieceOnBoard(source).getName().equals("knight")) return isOtherReqMeet; // knight does not need to have a clear path to move
+		
+		char kindOfMove = source.kindOfMove(dest); // is it a vertical, horizontal or diagonal move
 		
 		// debug
 		System.out.println("Kind of path: " + kindOfMove);

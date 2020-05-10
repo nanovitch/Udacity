@@ -8,14 +8,22 @@ public class Position {
 	private final int rawCol;
 	private final String positionAsString;
 	
-	private HashMap<String, Integer> convertCol = new HashMap<String, Integer>() {{put("a", 0); put("b", 1); put("c", 2); put("d", 3); put("e", 4); put("f", 5); put("g", 6); put("h", 7);}};
+	private HashMap<String, Integer> convertCol = new HashMap<String, Integer>() {
+		/**
+		 * Associate the right chess board colon letter to array colon 
+		 */
+		private static final long serialVersionUID = 1L; // to avoid compiler warning.
+
+		{put("a", 0); put("b", 1); put("c", 2); put("d", 3); put("e", 4); put("f", 5); put("g", 6); put("h", 7);}
+	};
+	
 	
 	private final int MAX_ROW = 8;
 	private final int MAX_COL = 8;
 	private final int MIN_ROW = 1;
 	private final int MIN_COL = 1;
 	
-	Position(String s){
+	Position(final String s){
 		
 		// debug
 		assert(s.length()==2):"INVALID POSITION STRING";
@@ -33,7 +41,7 @@ public class Position {
 		this.rawCol = convertCol.get(col);
 	}
 	
-	Position(int rawRow, int rawCol){
+	Position(final int rawRow, final int rawCol){
 		// debug
 		assert(rawRow>=MIN_ROW-1 && rawRow<MAX_ROW && rawCol>=MIN_COL-1 && rawCol<MAX_COL):"INVALID POSITION ARGUMENTS";
 		// debug end
@@ -68,19 +76,16 @@ public class Position {
 		return (this.rawRow >= MIN_ROW-1 && this.rawCol >= MIN_COL-1 && this.rawRow < MAX_ROW && this.rawCol < MAX_COL);
 	}
 	
-	public char kindOfMove(Position dest) { //'D': diagonal move, 'V': vertical move, 'H': horizental move, 'C': knight move, 'K': king move, , 'E': error
+	public final char kindOfMove(final Position dest) { //'D': diagonal move, 'V': vertical move, 'H': horizental move, 'X': error
 		int srcRow = this.getRawRow();
 		int destRow = dest.getRawRow();
 		int srcCol = this.getRawCol();
 		int destCol = dest.getRawCol();
-		char result = 'E'; // error
+		char result = 'X'; // error
 		
-		if ((Math.abs(destCol - srcCol) == 2 && Math.abs(destRow - srcRow) == 1) || (Math.abs(destCol - srcCol) == 1 && Math.abs(destRow - srcRow) == 2)) result = 'C';
 		if (Math.abs(destCol - srcCol) == Math.abs(destRow - srcRow)) result = 'D';
 		if (destCol == srcCol) result = 'V';
 		if (destRow == srcRow) result = 'H';
-		
-		//if ( (Math.abs(destCol - srcCol) == 1 && (destRow == srcRow)) || (Math.abs(destRow - srcRow) == 1 && (destCol == srcCol)) || (Math.abs(destCol - srcCol) == 1 && Math.abs(destRow - srcRow) == 1)) return 'K';
 		
 		return result;
 	}

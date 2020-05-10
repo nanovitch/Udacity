@@ -89,10 +89,6 @@ public class Main {
 		chessBoard.showBoard();
 		*/
 		
-		// Queen test
-		
-		// King test
-		
 		// Knight test
 		chessBoard.play(new Position("e2"), new Position("e3"));
 		chessBoard.showBoard();
@@ -116,14 +112,11 @@ public class Main {
 		chessBoard.showBoard();
 		chessBoard.play(new Position("a3"), new Position("b1"));
 		chessBoard.showBoard();
-		/*chessBoard.play(new Position("d7"), new Position("d6"));
-		chessBoard.showBoard();
-		chessBoard.play(new Position("c3"), new Position("h3"));
-		chessBoard.showBoard();
-		chessBoard.play(new Position("d6"), new Position("d5"));
-		chessBoard.showBoard();
-		chessBoard.play(new Position("h3"), new Position("h1"));
-		chessBoard.showBoard();*/
+		
+		// Queen test
+		
+		// King test
+		
 	}
 
 }

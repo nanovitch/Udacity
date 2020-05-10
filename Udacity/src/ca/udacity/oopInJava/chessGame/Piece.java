@@ -4,8 +4,8 @@ public abstract class Piece {
 	
 	private final String packageName = this.getClass().getPackage().getName(); //used to detect which kind of Piece is in "isMyMoveCorrect" method
 	
-	protected Position position;
-	protected final int color; //0 for white and 1 for black
+	private Position position;
+	private final int color; //0 for white and 1 for black
 	private final String name;
 	
 	Piece(String name, Position position, int color){
@@ -26,17 +26,17 @@ public abstract class Piece {
 		return this.position;
 	}
 	
-	public final void setPosition(Position position) {
+	public final void setPosition(final Position position) {
 		this.position = position;
 	}
 	
-	public final void move(Position newPosition) {
+	public final void move(final Position newPosition) {
 		this.setPosition(newPosition);
 	}
 	
 	//public abstract boolean isValideMove(Position newPosition, Board board);
 	
-	public boolean isMyMoveCorrect(Position dest, Board board) { 
+	public boolean isMyMoveCorrect(final Position dest, final Board board) { 
 		int srcRow = this.getPosition().getRawRow();
 		int destRow = dest.getRawRow();
 		int srcCol = this.getPosition().getRawCol();
