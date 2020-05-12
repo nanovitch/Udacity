@@ -4,12 +4,19 @@ public class Main {
 	
 	static public enum color { WHITE, BLACK };
 	static public enum ChessPlayer { WHITE, BLACK };
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Board chessBoard = new Board();
 		chessBoard.boardSetup();
 		chessBoard.showBoard();
+		
+		/* 
+		    ...
+		    final ChessPlayer getFirstPlayer() {
+		        return ChessPlayer.WHITE;
+		    }
+		*/
 		
 		/*
 		// Pawn test

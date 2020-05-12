@@ -4,24 +4,30 @@ package ca.udacity.saad.library;
 
 public class Book extends Checkable {
 	
-	protected static final int CHECK_OUT_PERIOD_DAYS = 21;
+	protected final int CHECK_OUT_PERIOD_DAYS; // 21 days if not a bestseller otherwise 14 days.
 	
 	protected boolean isBestSeller;
 	protected final String isbn;
 	protected final String author;
 
 	protected Book(String isbn, String title, String author, double value, boolean isBestSeller) {
-		super(title, value, CHECK_OUT_PERIOD_DAYS);
+		super(title, value);
 		this.isbn = isbn;
 		this.author = author;
 		this.isBestSeller = isBestSeller;
+		this.CHECK_OUT_PERIOD_DAYS = (this.isBestSeller) ? 14 : 21;
 	}
 	
 	protected Book(String title, double value, boolean isBestSeller) {
-		super(title, value, CHECK_OUT_PERIOD_DAYS);
+		super(title, value);
 		this.isbn = "";
 		this.author = "";
 		this.isBestSeller = isBestSeller;
+		this.CHECK_OUT_PERIOD_DAYS = (this.isBestSeller) ? 14 : 21;
+	}
+	
+	public int getCheckoutPeriodDays() {
+		return CHECK_OUT_PERIOD_DAYS;
 	}
 
 	public final boolean isBestSeller() {
@@ -56,6 +62,8 @@ public class Book extends Checkable {
 		result.append(this.title);
 		result.append(" (isBestSeller: ");
 		result.append(this.isBestSeller);
+		result.append(" (checkOutPeriod: ");
+		result.append(CHECK_OUT_PERIOD_DAYS);
 		result.append(')');
 		return result.toString();
 	}

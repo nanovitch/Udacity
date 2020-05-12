@@ -76,7 +76,7 @@ public class Position {
 		return (this.rawRow >= MIN_ROW-1 && this.rawCol >= MIN_COL-1 && this.rawRow < MAX_ROW && this.rawCol < MAX_COL);
 	}
 	
-	public final char kindOfMove(final Position dest) { //'D': diagonal move, 'V': vertical move, 'H': horizental move, 'X': error
+	public final char moveDirection(final Position dest) { //'D': diagonal move, 'V': vertical move, 'H': horizental move, 'X': error
 		int srcRow = this.getRawRow();
 		int destRow = dest.getRawRow();
 		int srcCol = this.getRawCol();
@@ -84,8 +84,11 @@ public class Position {
 		char result = 'X'; // error
 		
 		if (Math.abs(destCol - srcCol) == Math.abs(destRow - srcRow)) result = 'D';
-		if (destCol == srcCol) result = 'V';
-		if (destRow == srcRow) result = 'H';
+		else 
+			if (destCol == srcCol) result = 'V';
+			else
+				if (destRow == srcRow) result = 'H';
+				else System.out.println("MOVE!!!");
 		
 		return result;
 	}

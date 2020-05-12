@@ -55,7 +55,7 @@ public class Board {
 		// debug end
 		
 		// updating pieces on board
-		if (pieceToMove.isMyMoveCorrect(dest, this)) {
+		if (pieceToMove.isValideMove(dest, this)) {
 			this.setThePieceOnBoard(dest, pieceToMove);
 			pieceToMove.setPosition(dest);
 			this.setThePieceOnBoard(source, null);
@@ -86,28 +86,17 @@ public class Board {
 	//'D': diagonal move, 'V': vertical move, 'H': horizental move
 	public boolean isThisPathClear(final Position source, final Position dest) {
 		
-		Piece pieceSrc = this.getThePieceOnBoard(source);
-		Piece pieceDest = this.getThePieceOnBoard(dest);
+		char moveDirection = source.moveDirection(dest); // is it a vertical, horizontal or diagonal move
 		
 		// debug
-		assert(pieceSrc != null):"ABNORMAL CALL!!!";
-		// debug end
-		
-		boolean isOtherReqMeet = dest.isInBoardMove() && (pieceDest == null || pieceDest.getColor() != pieceSrc.getColor());
-		
-		if (this.getThePieceOnBoard(source).getName().equals("knight")) return isOtherReqMeet; // knight does not need to have a clear path to move
-		
-		char kindOfMove = source.kindOfMove(dest); // is it a vertical, horizontal or diagonal move
-		
-		// debug
-		System.out.println("Kind of path: " + kindOfMove);
+		System.out.println("Move direction: " + moveDirection);
 		System.out.println("Source position: " + source.getPositionAsString());
 		System.out.println("Dest position: " + dest.getPositionAsString());
 		// debug end
 		
 		boolean result = true;
 		int row, col, minRow, maxRow, minCol, maxCol;
-		switch(kindOfMove) {
+		switch(moveDirection) {
 		case 'D': 
 			minRow = source.getRawRow();
 			maxRow = dest.getRawRow();
@@ -167,7 +156,7 @@ public class Board {
 			result = false;
 		}
 		
-		return result && isOtherReqMeet;
+		return result;
 	}
 
 }
