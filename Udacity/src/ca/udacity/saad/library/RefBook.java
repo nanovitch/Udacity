@@ -1,11 +1,11 @@
 package ca.udacity.saad.library;
 
-public class RefBook extends NoCheckable {
-	protected RefBook(String title) {
+public class RefBook extends NoLoanable {
+	protected RefBook(Title title) {
 		super(title);
 	}
 	
-	public Item copy() {
+	protected Item copy() {
 		return new RefBook(this.title);
 	}
 }

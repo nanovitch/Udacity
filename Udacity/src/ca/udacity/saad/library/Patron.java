@@ -9,14 +9,14 @@ public class Patron {
 	static int PATRON_UNIQUE_ID = 0;
     private final int identifier = ++PATRON_UNIQUE_ID;
     private final Card card;
-	protected String name;
-	protected String address;
-	protected String phoneNumber;
-	protected String status;
-	protected int age;
+    private String name;
+    private String address;
+    private String phoneNumber;
+    private String status;
+    private int age;
 	
-	protected List<CheckOut> checkouts = new ArrayList<CheckOut>();
-	protected Library library;
+    private List<Loan> loans = new ArrayList<Loan>();
+    private Library library;
 
 	protected Patron(String name, String address, String phoneNumber, int age, Library library) {
 		this.card = new Card(this.identifier);
@@ -94,45 +94,46 @@ public class Patron {
 	public final Card getCard() {
 		return this.card;
 	}
+	
+	public boolean isUniqueLoan(String title) {
+		for (Loan loan:this.loans) if (loan.getTitle().equals(title)) return false;
+		return true;
+	}
 
 	public boolean checkOutItem(String title) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (this.isChild() && this.checkouts.size() >= 5) return false; // 5 checkouts max for children
+		if (this.isChild() && this.loans.size() >= 5) return false; // 5 checkouts max for children
 		
-		// choose only available checkable items
-		List<Checkable> checkables = this.library.getAvailableCheckables(title);
-		if (checkables.isEmpty()) return false;
+		// check if a copy is available
+		Loanable copie = this.library.getAvailableCopie(title);
 		
-		int i = (int) Math.round(Math.random() * (double)(checkables.size()-1));
-		Checkable checkable = checkables.get(i); // choose a random checkable item from those who match title
-		this.checkouts.add(new CheckOut(this, checkable));
+		//System.out.println("getAvailableCopie: " + copie);
 		
+		if (copie == null) return false;
+		
+		//System.out.println("isUniqueLoan: " + isUniqueLoan(title));
+		
+		// check that item not already loaned
+		if (!this.isUniqueLoan(title)) return false;
+		
+				
+		this.loans.add(new Loan(this, copie));
+		copie.incNumOfLoans();
+		copie.setStatus("loaned");
 		return true;
 	}
 	
-	public final boolean isTitleAlreadyCheckouted(String title) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		for(CheckOut checkout:checkouts) 
-			if (checkout.item.getTitle().equals(title)) return true;;
-		return false;
-	}
-
 	public final boolean requestTitle(String title) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
 		return this.library.requestTitle(this, title);
 	}
 
 	public boolean renewCheckout(int identifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		for(CheckOut checkout:checkouts) {
-			if (checkout.getItem().getIdentifier() == identifier) {
-				if (checkout.getNumRenews() > 0) return false;
-				checkout.setRenewDate(LocalDate.now());
-				checkout.incRenews();
+		for(Loan loan:loans) {
+			Loanable item = loan.getItem();
+			if (item.getIdentifier() == identifier) {
+				if (loan.getNumRenews() >= item.getRenewsMax()) return false;
+				if (this.library.isTitleAlreadyRequested(this, item.getTitle())) return false;
+				loan.setRenewDate(LocalDate.now());
+				loan.incRenews();
 				return true;
 			}
 		}
@@ -140,31 +141,26 @@ public class Patron {
 	}
 
 	public boolean returnCheckout(String title) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		for (CheckOut checkout:checkouts) 
-			if (checkout.getItem().getTitle().equals(title)) {
-				Checkable item = checkout.getItem();
+		for (Loan loan:loans) 
+			if (loan.getItem().getTitle().equals(title)) {
+				Loanable item = loan.getItem();
+				this.loans.remove(loan);
 				item.setStatus("available");
-				this.checkouts.remove(checkout);
-				this.library.notifyReturn(title);
+				item.decNumOfLoans();
+				this.library.returnNotification(title, this);
 				return true;
 			}
 		return false;	
 	}
 	
 	public double calculTotalFine() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
 		double totalFine = 0;
-		for (CheckOut checkout:this.checkouts) totalFine += checkout.calculFine();
+		for (Loan loan:this.loans) totalFine += loan.calculFine();
 		return totalFine;
 	}
 
 	public void listCheckouts() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		for(CheckOut checkout:checkouts) System.out.println(checkout.toString());
+		for(Loan checkout:loans) System.out.println(checkout.toString());
 	}
 
 	@Override

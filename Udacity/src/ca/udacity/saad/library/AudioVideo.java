@@ -2,16 +2,16 @@
  */
 package ca.udacity.saad.library;
 
-public class AudioVideo extends Checkable {
+public class AudioVideo extends Loanable {
 	
 	protected final int CHECK_OUT_PERIOD_DAYS = 14;
 	
-	protected AudioVideo(String title, double value) {
+	public AudioVideo(Title title, double value) {
 		super(title, value);
 	}
 	
-	public Item copy() {
-		return new AudioVideo(this.title, this.value);
+	protected Item copy() {
+		return new AudioVideo(this.title, this.getValue());
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class AudioVideo extends Checkable {
 	public String toString() {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(", title: ");
-		result.append(this.title);
+		result.append(this.getTitle());
 		result.append(", status: ");
 		result.append(this.status);
 		result.append(" (checkOutPeriod: ");

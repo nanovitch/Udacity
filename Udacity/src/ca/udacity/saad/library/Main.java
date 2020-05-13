@@ -11,11 +11,17 @@ public class Main {
 		Patron p3 = new Patron(20, library);
 		Patron p4 = new Patron(30, library);
 		
-		Item i1 = new Book("La religion perenne", 80, true);
-		Item i2 = new Book("Du Divin a l'humain", 90, true);
-		Item i3 = new Book("Resume de Metaphysique", 85, true);
-		Item i4 = new AudioVideo("Meknassia", 35);
-		Item i5 = new Magazine("Pif");
+		Title t1 = new Title("La religion perenne");
+		Title t2 = new Title("Du Divin a l'humain");
+		Title t3 = new Title("Resume de Metaphysique");
+		Title t4 = new Title("Meknassia");
+		Title t5 = new Title("Pif");
+		
+		Item i1 = new Book(t1, 80, true);
+		Item i2 = new Book(t2, 90, true);
+		Item i3 = new Book(t3, 85, true);
+		Item i4 = new AudioVideo(t4, 35);
+		Item i5 = new Magazine(t5);
 		
 		System.out.println("Ajout de 4 utilisateurs (Patron p1 a p4) a la librairie");
 		System.out.println(library.addPatron(p1));
@@ -24,9 +30,9 @@ public class Main {
 		System.out.println(library.addPatron(p4));
 		
 		System.out.println("Ajout de 3 exemplaires du livre (Book i1) \"La religion perenne\"");
-		System.out.println(library.addItem(i1, 2)); // addItem(i (item a ajouter), 2 (nombre de copies supplementaires)) ==> nbre total d'exemplaires = 3
+		System.out.println(library.addItem(i1, 3)); // addItem(i (item a ajouter), 3 (nombre total de copies))
 		System.out.println("Ajout de 5 exemplaires du livre (Book i2) \"Du Divin a l'humain\"");
-		System.out.println(library.addItem(i2, 4));
+		System.out.println(library.addItem(i2, 5));
 		System.out.println("Ajout de 1 exemplaire du livre (Book i3) \"Resume de Metaphysique\"");
 		System.out.println(library.addItem(i3, 1));
 		System.out.println("Ajout de 1 exemplaire audio-videoe (AudioVideo i4) \"Meknassia\"");
@@ -38,7 +44,7 @@ public class Main {
 		System.out.println(p1.checkOutItem("La religion perenne"));
 		System.out.println(p2.checkOutItem("La religion perenne"));
 		System.out.println(p3.checkOutItem("La religion perenne")); 
-		
+				
 		System.out.println("Test: Tentative de recheck du meme exemplaire par l'adulte => false");
 		System.out.println(p3.checkOutItem("La religion perenne"));
 		

@@ -2,23 +2,25 @@
  */
 package ca.udacity.saad.library;
 
-public class Book extends Checkable {
+public class Book extends Loanable {
 	
-	protected final int CHECK_OUT_PERIOD_DAYS; // 21 days if not a bestseller otherwise 14 days.
+	private static final int NOBESTSELLER_CHECK_OUT_PERIOD_DAYS = 21;
+	private static final int BESTSELLER_CHECK_OUT_PERIOD_DAYS = 14;
 	
-	protected boolean isBestSeller;
-	protected final String isbn;
-	protected final String author;
+	private final int CHECK_OUT_PERIOD_DAYS; // 21 days if not a bestseller otherwise 14 days.
+	private boolean isBestSeller;
+	private final String isbn;
+	private final String author;
 
-	protected Book(String isbn, String title, String author, double value, boolean isBestSeller) {
+	public Book(String isbn, Title title, String author, double value, boolean isBestSeller) {
 		super(title, value);
 		this.isbn = isbn;
 		this.author = author;
 		this.isBestSeller = isBestSeller;
-		this.CHECK_OUT_PERIOD_DAYS = (this.isBestSeller) ? 14 : 21;
+		this.CHECK_OUT_PERIOD_DAYS = (this.isBestSeller) ? BESTSELLER_CHECK_OUT_PERIOD_DAYS : NOBESTSELLER_CHECK_OUT_PERIOD_DAYS;
 	}
 	
-	protected Book(String title, double value, boolean isBestSeller) {
+	public Book(Title title, double value, boolean isBestSeller) {
 		super(title, value);
 		this.isbn = "";
 		this.author = "";
@@ -47,8 +49,8 @@ public class Book extends Checkable {
 		return author;
 	}
 	
-	public Item copy() {
-		return new Book(this.isbn, this.title, this.author, this.value, this.isBestSeller);
+	protected Item copy() {
+		return new Book(this.isbn, this.title, this.author, this.getValue(), this.isBestSeller);
 	}
 
 	@Override
@@ -59,11 +61,11 @@ public class Book extends Checkable {
 		result.append(", author: ");
 		result.append(this.author);
 		result.append(", title: ");
-		result.append(this.title);
+		result.append(this.getTitle());
 		result.append(" (isBestSeller: ");
 		result.append(this.isBestSeller);
 		result.append(" (checkOutPeriod: ");
-		result.append(CHECK_OUT_PERIOD_DAYS);
+		result.append(this.CHECK_OUT_PERIOD_DAYS);
 		result.append(')');
 		return result.toString();
 	}

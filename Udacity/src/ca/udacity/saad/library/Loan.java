@@ -7,24 +7,24 @@ package ca.udacity.saad.library;
 import java.time.temporal.ChronoUnit;
 import java.time.LocalDate;
 
-public class CheckOut  {
+public class Loan  {
 	
-	protected final LocalDate checkoutDate = LocalDate.now();
-	protected LocalDate renewDate= LocalDate.now();
-	protected LocalDate dueDate;
-	protected int numRenews=0;
-	protected LocalDate returnDate = null;
-	protected final Patron patron;
-	protected final Checkable item;
+	private final LocalDate checkoutDate = LocalDate.now();
+	private LocalDate renewDate= LocalDate.now();
+	private LocalDate dueDate;
+	private int numRenews=0;
+	private LocalDate returnDate = null;
+	private final Patron patron;
+	private final Loanable item;
 	
-	protected CheckOut(Patron patron, Checkable item) {
+	public Loan(Patron patron, Loanable item) {
 		this.patron = patron;
 		this.item = item;
 		item.setStatus("not available");
 		this.dueDate = checkoutDate.plusDays(item.getCheckoutPeriodDays());
 	}
 	
-	public Checkable getItem() {
+	public Loanable getItem() {
 		// debug
 		assert(this.returnDate == null):"ABNORMAL OPERATION!!! Object normally waiting to be garbage collected.";
 		//  debug end
@@ -38,6 +38,14 @@ public class CheckOut  {
 		//  debug end
 			
 		return this.patron;
+	}
+	
+	public String getTitle() {
+		// debug
+		assert(this.returnDate == null):"ABNORMAL OPERATION!!! Object normally waiting to be garbage collected.";
+		//  debug end
+		
+		return this.item.getTitle();
 	}
 
 	public LocalDate getCheckoutDate() {
@@ -173,8 +181,8 @@ public class CheckOut  {
 		result.append(dueDate);
 		result.append(", returnDate: ");
 		result.append(returnDate);
-		
 		result.append(')');
+		
 		return result.toString();
 	}
 

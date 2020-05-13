@@ -1,8 +1,8 @@
 package ca.udacity.saad.library;
 
-public abstract class NoCheckable extends Item {
+public abstract class NoLoanable extends Item {
 	
-	protected NoCheckable(String title) {
+	public NoLoanable(Title title) {
 		super(title, "not checkable");
 	}
 	
@@ -11,5 +11,5 @@ public abstract class NoCheckable extends Item {
 		return false;
 	}	
 	
-	public abstract Item copy();
+	protected abstract Item copy();
 }

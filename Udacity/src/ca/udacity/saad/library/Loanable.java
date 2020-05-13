@@ -2,21 +2,20 @@
  */
 package ca.udacity.saad.library;
 
-public abstract class Checkable extends Item {
-	//protected final int CHECK_OUT_PERIOD_DAYS;
-	protected final int RENEWS_MAX = 1;
-	protected final double value;
-	protected double finePerDay=0.10;
+public abstract class Loanable extends Item {
+	private static final int RENEWS_MAX = 1;
+	private final double value;
+	private double finePerDay=0.10;
+	private int numOfLoans = 0;
 	
-	protected Checkable(String title, double value/*, int CHECK_OUT_PERIOD_DAYS*/) {
+	public Loanable(Title title, double value) {
 		super(title, "available");
 		this.value = value;
-		//this.CHECK_OUT_PERIOD_DAYS = CHECK_OUT_PERIOD_DAYS;
 		if (this.finePerDay > value) this.finePerDay = value;
 	}
 	
 	public int getRenewsMax() {
-		return this.RENEWS_MAX;
+		return Loanable.RENEWS_MAX;
 	}
 	
 	public abstract int getCheckoutPeriodDays() ;
@@ -34,12 +33,26 @@ public abstract class Checkable extends Item {
 		
 	}
 	
+	public int getNumOfLoans() {
+		return this.numOfLoans;
+	}
+
+	public void incNumOfLoans() {
+		this.numOfLoans += 1;
+		
+	}
+	
+	public void decNumOfLoans() {
+		this.numOfLoans -= 1;
+		assert(this.numOfLoans >= 0):"INVALID NUMBER OF LOANS";
+	}
+	
 	@Override
 	public boolean isCheckable() {
 		return true;
 	}
 	
-	public abstract Item copy();
+	protected abstract Item copy();
 
 	@Override
 	public String toString() {
