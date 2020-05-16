@@ -1,19 +1,25 @@
 package ca.udacity.oopInJava.library.newVersion;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Title {
 	private final String title;
-	private int numCopies;
+	private final String isbn;
 	private double value;
 	private double finePerDay=0.10;
-	private char type;
-	//private int numOfLoans = 0;
-	List<Item> items = new ArrayList<Item>();
+	private final char type;
+	private int numCopies;
 	
-	public Title(String title, char type, double value, int numCopies) /*throws Exception*/ {
+	//private int numOfLoans = 0;
+	private List<Item> items = new ArrayList<Item>();
+	private List<Patron> patrons = new LinkedList<Patron>(); // FIFO
+	
+	public Title(String title, String isbn, double value, char type, int numCopies) /*throws Exception*/ {
+		assert(type=='A' || type=='B' || type=='S' || type=='M' || type=='R'):"UNHANDLED ITEM TYPE!!!";
 		this.title = title;
+		this.isbn = isbn;
 		this.value = value;
 		if (this.finePerDay > value) this.finePerDay = value;
 		switch (type) {
@@ -21,10 +27,10 @@ public class Title {
 			for (int i=0; i < numCopies; i++) items.add(new AudioVideo(this));
 			break;
 		case 'B': // Book
-			for (int i=0; i < numCopies; i++) items.add(new Book(this, value, false));
+			for (int i=0; i < numCopies; i++) items.add(new Book(this, false));
 			break;
 		case 'S': // BestSeller
-			for (int i=0; i < numCopies; i++) items.add(new Book(this, value, true));
+			for (int i=0; i < numCopies; i++) items.add(new Book(this, true));
 			break;
 		case 'M': // Magazine
 			for (int i=0; i < numCopies; i++) items.add(new Magazine(this));
@@ -40,6 +46,9 @@ public class Title {
 		this.numCopies = numCopies;
 	}
 	
+	public final String getIsbn() {
+		return this.isbn;
+	}
 		
 	public String getTitle() {
 		return this.title;
@@ -60,11 +69,11 @@ public class Title {
 				this.numCopies += numCopies;
 				return true;
 			case 'B': 
-				for (int i=0; i < numCopies; i++) items.add(new Book(this, value, false));
+				for (int i=0; i < numCopies; i++) items.add(new Book(this, false));
 				this.numCopies += numCopies;
 				return true;
 			case 'S': 
-				for (int i=0; i < numCopies; i++) items.add(new Book(this, value, true));
+				for (int i=0; i < numCopies; i++) items.add(new Book(this, true));
 				this.numCopies += numCopies;
 				return true;
 			case 'M': 
@@ -127,7 +136,34 @@ public class Title {
 	}
 	*/
 	public void listAllItems() {
-		for (Item item:items) System.out.println(item.toString());
+		for (Item item:items) System.out.println(item);
+	}
+	
+	public boolean requestTitle(Patron patron) {
+		if (isTitleAlreadyRequested(patron)) return false;
+		patrons.add(patron);
+		return true;
+	}
+
+	public Patron requestedTitlePrioryPatron() {
+		if (patrons.isEmpty()) return null;
+		return patrons.get(0);
+	}
+	
+	public boolean removeRequest(Patron patron) {
+		return patrons.remove(patron);
+	}
+	
+	public boolean isTitleAlreadyRequested(Patron patron) {
+		return patrons.contains(patron);
+	}
+	
+	public boolean isRequestExists() {
+		return !patrons.isEmpty();
+	}
+	
+	public boolean isRequestExists(Patron patron) {
+		return patrons.contains(patron);
 	}
 	
 	@Override
@@ -145,6 +181,17 @@ public class Title {
 		//result.append(numOfLoans);
 		result.append(')');
 		return result.toString();
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		boolean result = false;
+		if (o != null && o instanceof Title) {
+			Title other = (Title)o;
+			result = (this.isbn == other.isbn);
+		}
+			
+		return result;
 	}
 
 }

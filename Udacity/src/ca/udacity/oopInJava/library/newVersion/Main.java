@@ -1,21 +1,31 @@
 package ca.udacity.oopInJava.library.newVersion;
 
+import java.time.LocalDate;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Library library = new Library();
 		
-		Patron p1 = new Patron(10, library);
-		Patron p2 = new Patron(12, library);
-		Patron p3 = new Patron(20, library);
-		Patron p4 = new Patron(30, library);
+		Patron p1 = new Patron(LocalDate.ofYearDay(2010, 1), library);
+		Patron p2 = new Patron(LocalDate.ofYearDay(2008, 1), library);
+		Patron p3 = new Patron(LocalDate.ofYearDay(2000, 1), library);
+		Patron p4 = new Patron(LocalDate.ofYearDay(1990, 1), library);
 		
-		Title t1 = new Title("La religion perenne", 'S', 100, 3);
-		Title t2 = new Title("Du Divin a l'humain", 'S', 100, 5);
-		Title t3 = new Title("Resume de Metaphysique", 'S', 100, 1);
-		Title t4 = new Title("Meknassia", 'A', 30, 1);
-		Title t5 = new Title("Pif", 'M', 10, 1);
+		// Expected to change the p1, p2, p3 et p4 status to "suspended" 1 year after their activation by the addPatron method of the Library class
+		// if called now => blocks the program
+		// to stop it => rem1.timer.cancel()
+		//RenewReminder rem1 = new RenewReminder(p1); 
+		//new RenewReminder(p2);
+		//new RenewReminder(p3);
+		//new RenewReminder(p4);
+		
+		Title t1 = new Title("La religion perenne", "s100", 100, 'S', 3); // 'S' == bestSeller
+		Title t2 = new Title("Du Divin a l'humain", "s101", 100, 'S', 5);
+		Title t3 = new Title("Resume de Metaphysique", "s102", 100, 'S', 1);
+		Title t4 = new Title("Meknassia", "a100", 30, 'A', 1); // 'A' == audioVideo
+		Title t5 = new Title("Pif", "m100", 10, 'M', 1); // 'M' == magazine
 		
 		System.out.println("Ajout de 4 utilisateurs (Patron p1 a p4) a la librairie");
 		System.out.println(library.addPatron(p1));
@@ -65,6 +75,14 @@ public class Main {
 		library.listAllTitles();
 		System.out.println("============================================================================================================");
 		library.listAllItems();
+		
+		Test(5);
+	}
+	
+	public static void Test(int i){
+		System.out.println(i);
+		Title t = new Title("La religion perenne", "s100", 100, 'S', 3);
+		System.out.println(t.getIsbn());
 	}
 
 }

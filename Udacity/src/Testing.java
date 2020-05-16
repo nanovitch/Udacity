@@ -62,7 +62,7 @@ public class Testing {
 		System.out.println("Au revoir !");
 	    sc.close();
 	    */
-		
+		/*
 	    String[][] tabStr2 = {{"1", "2", "3", "4"}, {"toto", "titi", "tata"}};
 	    parcourirTableau(tabStr2);
 	    
@@ -75,7 +75,8 @@ public class Testing {
 	         	System.out.println("La valeur est  = " + str2);
 	     	}
 	     
-	    }
+	    }*/
+		
 	}
 	
 	public static double arrondi(double A, int B) {
@@ -90,5 +91,19 @@ public class Testing {
 	      System.out.println(str);
 	  }
 	}
+	
+}
 
+class Vehicle{
+	Vehicle(){
+		System.out.println("Vehicle");
+	}
+	
+}
+
+class Car extends Vehicle{
+	Car(){
+		System.out.println("Car");
+	}
+	
 }

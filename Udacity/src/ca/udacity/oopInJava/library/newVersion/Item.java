@@ -4,25 +4,29 @@ package ca.udacity.oopInJava.library.newVersion;
 
 public  class Item  {
 	private static int ITEM_UNIQUE_ID = 0;
+	
     private final int identifier = ++ITEM_UNIQUE_ID;
     private final Title title;
 	protected String status;
-		
-	public Item(Title title, String status) {
-		this.status = status;
-		this.title = title;
-	}
 	
+			
+	public Item(Title title, String status) {
+		assert(title != null):"an item must have a title!";
+		this.title = title;
+		this.status = status;
+		
+	}
 	
 	public int getIdentifier() {
 		return identifier;
 	}
 
-		
 	public String getTitle() {
 		return title.getTitle();
 	}
 	
+	
+
 	public Title getTitleObject() {
 		return this.title;
 	}
@@ -51,5 +55,5 @@ public  class Item  {
 		return result.toString();
 	}
 
-
+	
 }

@@ -9,31 +9,28 @@ public class Book extends Loanable {
 	
 	private final int CHECK_OUT_PERIOD_DAYS; // 21 days if not a bestseller otherwise 14 days.
 	private boolean isBestSeller;
-	private final String isbn;
 	private final String author;
 
-	public Book(Title title, String isbn, String author, double value, boolean isBestSeller) {
+	public Book(Title title, String author, double value, boolean isBestSeller) {
 		super(title);
-		this.isbn = isbn;
 		this.author = author;
 		this.isBestSeller = isBestSeller;
-		this.CHECK_OUT_PERIOD_DAYS = (this.isBestSeller) ? BESTSELLER_CHECK_OUT_PERIOD_DAYS : NOBESTSELLER_CHECK_OUT_PERIOD_DAYS;
+		this.CHECK_OUT_PERIOD_DAYS = (this.isBestSeller) ? Book.BESTSELLER_CHECK_OUT_PERIOD_DAYS : Book.NOBESTSELLER_CHECK_OUT_PERIOD_DAYS;
 	}
 	
-	public Book(Title title, double value, boolean isBestSeller) {
+	public Book(Title title, boolean isBestSeller) {
 		super(title);
-		this.isbn = "";
 		this.author = "";
 		this.isBestSeller = isBestSeller;
-		this.CHECK_OUT_PERIOD_DAYS = (this.isBestSeller) ? 14 : 21;
+		this.CHECK_OUT_PERIOD_DAYS = (this.isBestSeller) ? Book.BESTSELLER_CHECK_OUT_PERIOD_DAYS : Book.NOBESTSELLER_CHECK_OUT_PERIOD_DAYS;
 	}
 	
 	public int getCheckoutPeriodDays() {
-		return CHECK_OUT_PERIOD_DAYS;
+		return this.CHECK_OUT_PERIOD_DAYS;
 	}
 
 	public final boolean isBestSeller() {
-		return isBestSeller;
+		return this.isBestSeller;
 	}
 
 	public void setIsBestSeller(boolean isBestSeller) {
@@ -41,12 +38,8 @@ public class Book extends Loanable {
 		
 	}
 
-	public final String getIsbn() {
-		return isbn;
-	}
-
 	public final String getAuthor() {
-		return author;
+		return this.author;
 	}
 	
 	@Override
@@ -54,8 +47,6 @@ public class Book extends Loanable {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (isBestSeller: ");
 		result.append(this.isBestSeller);
-		result.append(", isbn: ");
-		result.append(this.isbn);
 		result.append(", author: ");
 		result.append(this.author);
 		result.append(", title: ");
@@ -65,5 +56,5 @@ public class Book extends Loanable {
 		result.append(')');
 		return result.toString();
 	}
-
+	
 }

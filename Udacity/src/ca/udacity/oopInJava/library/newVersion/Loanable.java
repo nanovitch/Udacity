@@ -17,9 +17,6 @@ public abstract class Loanable extends Item {
 	
 	public abstract int getCheckoutPeriodDays() ;
 
-	
-	
-	
 	@Override
 	public String toString() {
 		StringBuilder result = new StringBuilder(super.toString());
