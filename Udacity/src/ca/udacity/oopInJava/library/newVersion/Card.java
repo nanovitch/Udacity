@@ -4,7 +4,7 @@ package ca.udacity.oopInJava.library.newVersion;
 
 import java.time.LocalDate;
 
-public class Card {
+class Card {
 	private static final int VALIDITY_PERIOD_YEARS = 1;
 	
 	private final Patron patron;

@@ -7,7 +7,7 @@ package ca.udacity.oopInJava.library.newVersion;
 import java.time.temporal.ChronoUnit;
 import java.time.LocalDate;
 
-public class Loan  {
+class Loan  {
 	
 	private final LocalDate checkoutDate = LocalDate.now();
 	private LocalDate renewDate= LocalDate.now();
@@ -17,7 +17,7 @@ public class Loan  {
 	private final Patron patron;
 	private final Loanable item;
 	
-	public Loan(Patron patron, Loanable item) {
+	Loan(Patron patron, Loanable item) {
 		this.patron = patron;
 		this.item = item;
 		item.setStatus("not available");
@@ -73,7 +73,7 @@ public class Loan  {
 		updateDueDate();
 	}
 	
-	public void incRenews() {
+	void incRenews() {
 		// debug
 			assert(this.returnDate == null):"ABNORMAL OPERATION!!! Object normally waiting to be garbage collected.";
 		//  debug end
@@ -82,23 +82,25 @@ public class Loan  {
 		
 	}
 	
-	public void decRenews() {
-		// debug
-			assert(this.returnDate == null):"ABNORMAL OPERATION!!! Object normally waiting to be garbage collected.";
-		//  debug end
-				
-		this.numRenews--;
-		
-	}
+// TODO Remove unused code found by UCDetector
+// 	public void decRenews() {
+// 		// debug
+// 			assert(this.returnDate == null):"ABNORMAL OPERATION!!! Object normally waiting to be garbage collected.";
+// 		//  debug end
+// 				
+// 		this.numRenews--;
+// 		
+// 	}
 	
-	public void resetNumRenews() {
-		// debug
-			assert(this.returnDate == null):"ABNORMAL OPERATION!!! Object normally waiting to be garbage collected.";
-		//  debug end
-				
-		this.numRenews = 0;
-		
-	}
+// TODO Remove unused code found by UCDetector
+// 	public void resetNumRenews() {
+// 		// debug
+// 			assert(this.returnDate == null):"ABNORMAL OPERATION!!! Object normally waiting to be garbage collected.";
+// 		//  debug end
+// 				
+// 		this.numRenews = 0;
+// 		
+// 	}
 	
 	public int getNumRenews() {
 		// debug
@@ -125,7 +127,7 @@ public class Loan  {
 		return this.dueDate;
 	}
 
-	public void updateDueDate() {
+	private void updateDueDate() {
 		// debug
 			assert(this.returnDate == null):"ABNORMAL OPERATION!!! Object normally waiting to be garbage collected.";
 		//  debug end
@@ -150,7 +152,7 @@ public class Loan  {
 		
 	}
 
-	public double calculFine() {
+	double calculFine() {
 		// debug
 			assert(this.returnDate == null):"ABNORMAL OPERATION!!! Object normally waiting to be garbage collected.";
 		//  debug end

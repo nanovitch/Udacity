@@ -2,10 +2,10 @@
  */
 package ca.udacity.oopInJava.library.newVersion;
 
-public class AudioVideo extends Loanable {
+class AudioVideo extends Loanable {
 	private static final int AUDIVIDEO_CHECK_OUT_PERIOD_DAYS = 14;
 	
-	public AudioVideo(Title title) {
+	AudioVideo(Title title) {
 		super(title);
 	}
 	

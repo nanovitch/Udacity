@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Title {
+class Title {
 	private final String title;
 	private final String isbn;
 	private double value;
@@ -14,9 +14,9 @@ public class Title {
 	
 	//private int numOfLoans = 0;
 	private List<Item> items = new ArrayList<Item>();
-	private List<Patron> patrons = new LinkedList<Patron>(); // FIFO
+	private List<Patron> patrons = new LinkedList<Patron>(); // FIFO for patrons who did requests
 	
-	public Title(String title, String isbn, double value, char type, int numCopies) /*throws Exception*/ {
+	Title(String title, String isbn, double value, char type, int numCopies) /*throws Exception*/ {
 		assert(type=='A' || type=='B' || type=='S' || type=='M' || type=='R'):"UNHANDLED ITEM TYPE!!!";
 		this.title = title;
 		this.isbn = isbn;
@@ -62,33 +62,34 @@ public class Title {
 		return (this.type == 'A' || this.type == 'B' || this.type == 'S');
 	}
 	
-	public boolean addItems(int numCopies) {
-		switch (this.type) {
-			case 'A': 
-				for (int i=0; i < numCopies; i++) items.add(new AudioVideo(this));
-				this.numCopies += numCopies;
-				return true;
-			case 'B': 
-				for (int i=0; i < numCopies; i++) items.add(new Book(this, false));
-				this.numCopies += numCopies;
-				return true;
-			case 'S': 
-				for (int i=0; i < numCopies; i++) items.add(new Book(this, true));
-				this.numCopies += numCopies;
-				return true;
-			case 'M': 
-				for (int i=0; i < numCopies; i++) items.add(new Magazine(this));
-				this.numCopies += numCopies;
-				return true;
-			case 'R': 
-				for (int i=0; i < numCopies; i++) items.add(new RefBook(this));
-				this.numCopies += numCopies;
-				return true;
-		}
-		return false;
-	}
+// TODO Remove unused code found by UCDetector
+// 	public boolean addItems(int numCopies) {
+// 		switch (this.type) {
+// 			case 'A': 
+// 				for (int i=0; i < numCopies; i++) items.add(new AudioVideo(this));
+// 				this.numCopies += numCopies;
+// 				return true;
+// 			case 'B': 
+// 				for (int i=0; i < numCopies; i++) items.add(new Book(this, false));
+// 				this.numCopies += numCopies;
+// 				return true;
+// 			case 'S': 
+// 				for (int i=0; i < numCopies; i++) items.add(new Book(this, true));
+// 				this.numCopies += numCopies;
+// 				return true;
+// 			case 'M': 
+// 				for (int i=0; i < numCopies; i++) items.add(new Magazine(this));
+// 				this.numCopies += numCopies;
+// 				return true;
+// 			case 'R': 
+// 				for (int i=0; i < numCopies; i++) items.add(new RefBook(this));
+// 				this.numCopies += numCopies;
+// 				return true;
+// 		}
+// 		return false;
+// 	}
 	
-	public boolean removeItem(int itemID) {
+	boolean removeItem(int itemID) {
 		for (Item item:items) 
 			if(item.getIdentifier() == itemID) {
 				items.remove(item);
@@ -135,26 +136,26 @@ public class Title {
 		assert(this.numOfLoans >= 0):"INVALID NUMBER OF LOANS";
 	}
 	*/
-	public void listAllItems() {
+	void listAllItems() {
 		for (Item item:items) System.out.println(item);
 	}
 	
-	public boolean requestTitle(Patron patron) {
+	boolean requestTitle(Patron patron) {
 		if (isTitleAlreadyRequested(patron)) return false;
 		patrons.add(patron);
 		return true;
 	}
 
-	public Patron requestedTitlePrioryPatron() {
+	Patron requestedTitlePrioryPatron() {
 		if (patrons.isEmpty()) return null;
 		return patrons.get(0);
 	}
 	
-	public boolean removeRequest(Patron patron) {
+	boolean removeRequest(Patron patron) {
 		return patrons.remove(patron);
 	}
 	
-	public boolean isTitleAlreadyRequested(Patron patron) {
+	private boolean isTitleAlreadyRequested(Patron patron) {
 		return patrons.contains(patron);
 	}
 	
@@ -162,9 +163,10 @@ public class Title {
 		return !patrons.isEmpty();
 	}
 	
-	public boolean isRequestExists(Patron patron) {
-		return patrons.contains(patron);
-	}
+// TODO Remove unused code found by UCDetector
+// 	public boolean isRequestExists(Patron patron) {
+// 		return patrons.contains(patron);
+// 	}
 	
 	@Override
 	public String toString() {

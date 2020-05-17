@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Patron {
+class Patron {
 	
 	private static final int VALIDITY_PERIOD_YEARS = 1;
 	private static int PATRON_UNIQUE_ID = 0;
@@ -22,17 +22,18 @@ public class Patron {
     private List<Loan> loans = new ArrayList<Loan>();
     private Library library;
 
-	public Patron(String name, String address, String phoneNumber, LocalDate birthDate, Library library) {
-		this.name = name;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
-		this.status = "created";
-		this.birthDate = birthDate;
-		this.library = library;
-		this.card = new Card(this);
-	}
+// TODO Remove unused code found by UCDetector
+// 	Patron(String name, String address, String phoneNumber, LocalDate birthDate, Library library) {
+// 		this.name = name;
+// 		this.address = address;
+// 		this.phoneNumber = phoneNumber;
+// 		this.status = "created";
+// 		this.birthDate = birthDate;
+// 		this.library = library;
+// 		this.card = new Card(this);
+// 	}
 
-	public Patron(LocalDate birthDate, Library library) {
+	Patron(LocalDate birthDate, Library library) {
 		this.name = "";
 		this.address = "";
 		this.phoneNumber = "";
@@ -52,12 +53,13 @@ public class Patron {
 		return Patron.VALIDITY_PERIOD_YEARS;
 	}
 	
-	public boolean isItemActuallyLoaned(Loanable item) {
-		for (Loan loan:this.loans) if (loan.getItem() == item) return true;
-		return false;
-	}
+// TODO Remove unused code found by UCDetector
+// 	public boolean isItemActuallyLoaned(Loanable item) {
+// 		for (Loan loan:this.loans) if (loan.getItem() == item) return true;
+// 		return false;
+// 	}
 
-	public boolean checkOutItem(Loanable item) {
+	boolean checkOutItem(Loanable item) {
 
 		if (item == null) return false;
 		
@@ -91,24 +93,25 @@ public class Patron {
 
 	}
 
-	public final boolean requestTitle(Title title) {
+	final boolean requestTitle(Title title) {
 		if (title == null) return false;
 		return title.requestTitle(this);
 	}
 
-	public boolean renewCheckout(Loanable item) {
-		for(Loan loan:this.loans) {
-			if (loan.getItem() == item) {
-				if (loan.getNumRenews() >= item.getRenewsMax()) return false;
-				loan.setRenewDate(LocalDate.now());
-				loan.incRenews();
-				return true;
-			}
-		}
-		return false;
-	}
+// TODO Remove unused code found by UCDetector
+// 	public boolean renewCheckout(Loanable item) {
+// 		for(Loan loan:this.loans) {
+// 			if (loan.getItem() == item) {
+// 				if (loan.getNumRenews() >= item.getRenewsMax()) return false;
+// 				loan.setRenewDate(LocalDate.now());
+// 				loan.incRenews();
+// 				return true;
+// 			}
+// 		}
+// 		return false;
+// 	}
 	// probably that we have to archive a loan, especially that with due fines, before destroy it 
-	public boolean returnCheckout(Loanable item) {
+	boolean returnCheckout(Loanable item) {
 		if (item == null) return false;
 		for (Loan loan:this.loans) 
 			if (loan.getItem() == item) {
@@ -121,13 +124,14 @@ public class Patron {
 		return false;	
 	}
 
-	public double calculTotalFine() {
-		double totalFine = 0;
-		for (Loan loan:this.loans) totalFine += loan.calculFine();
-		return totalFine;
-	}
+// TODO Remove unused code found by UCDetector
+// 	public double calculTotalFine() {
+// 		double totalFine = 0;
+// 		for (Loan loan:this.loans) totalFine += loan.calculFine();
+// 		return totalFine;
+// 	}
 
-	public void listLoans() {
+	void listLoans() {
 		for(Loan loan:this.loans) System.out.println(loan);
 	}
 

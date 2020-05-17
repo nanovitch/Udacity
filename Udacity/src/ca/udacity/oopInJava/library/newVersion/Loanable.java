@@ -2,11 +2,11 @@
  */
 package ca.udacity.oopInJava.library.newVersion;
 
-public abstract class Loanable extends Item {
+abstract class Loanable extends Item {
 	private static final int RENEWS_MAX = 1;
 	
 	
-	public Loanable(Title title) {
+	Loanable(Title title) {
 		super(title, "available");
 		
 	}

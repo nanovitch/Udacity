@@ -2,7 +2,7 @@
  */
 package ca.udacity.oopInJava.library.newVersion;
 
-public class Book extends Loanable {
+class Book extends Loanable {
 	
 	private static final int NOBESTSELLER_CHECK_OUT_PERIOD_DAYS = 21;
 	private static final int BESTSELLER_CHECK_OUT_PERIOD_DAYS = 14;
@@ -11,14 +11,15 @@ public class Book extends Loanable {
 	private boolean isBestSeller;
 	private final String author;
 
-	public Book(Title title, String author, double value, boolean isBestSeller) {
-		super(title);
-		this.author = author;
-		this.isBestSeller = isBestSeller;
-		this.CHECK_OUT_PERIOD_DAYS = (this.isBestSeller) ? Book.BESTSELLER_CHECK_OUT_PERIOD_DAYS : Book.NOBESTSELLER_CHECK_OUT_PERIOD_DAYS;
-	}
+// TODO Remove unused code found by UCDetector
+// 	public Book(Title title, String author, double value, boolean isBestSeller) {
+// 		super(title);
+// 		this.author = author;
+// 		this.isBestSeller = isBestSeller;
+// 		this.CHECK_OUT_PERIOD_DAYS = (this.isBestSeller) ? Book.BESTSELLER_CHECK_OUT_PERIOD_DAYS : Book.NOBESTSELLER_CHECK_OUT_PERIOD_DAYS;
+// 	}
 	
-	public Book(Title title, boolean isBestSeller) {
+	Book(Title title, boolean isBestSeller) {
 		super(title);
 		this.author = "";
 		this.isBestSeller = isBestSeller;

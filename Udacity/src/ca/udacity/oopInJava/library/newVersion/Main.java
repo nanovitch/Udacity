@@ -76,13 +76,6 @@ public class Main {
 		System.out.println("============================================================================================================");
 		library.listAllItems();
 		
-		Test(5);
 	}
 	
-	public static void Test(int i){
-		System.out.println(i);
-		Title t = new Title("La religion perenne", "s100", 100, 'S', 3);
-		System.out.println(t.getIsbn());
-	}
-
 }
