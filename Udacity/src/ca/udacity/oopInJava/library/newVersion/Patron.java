@@ -186,6 +186,10 @@ class Patron {
 	public final Card getCard() {
 		return this.card;
 	}
+	
+	public int getNumOfLoans() {
+		return this.loans.size();
+	}
 
 	@Override
 	public String toString() {

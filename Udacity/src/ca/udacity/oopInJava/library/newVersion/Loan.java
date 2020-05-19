@@ -159,7 +159,9 @@ class Loan  {
 				
 		LocalDate toDay = LocalDate.now();
 		long noOfDaysBetween = ChronoUnit.DAYS.between(toDay, dueDate);
-		return (noOfDaysBetween > 0) ? this.item.getTitleObject().getFinePerDay() * (double)noOfDaysBetween:0.0;
+		double finePerDay = this.item.getTitleObject().getFinePerDay();
+		
+		return (noOfDaysBetween > 0) ? (finePerDay * noOfDaysBetween) : 0.0;
 	}
 
 	@Override

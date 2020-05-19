@@ -21,11 +21,11 @@ public class Main {
 		//new RenewReminder(p3);
 		//new RenewReminder(p4);
 		
-		Title t1 = new Title("La religion perenne", "s100", 100, 'S', 3); // 'S' == bestSeller
-		Title t2 = new Title("Du Divin a l'humain", "s101", 100, 'S', 5);
-		Title t3 = new Title("Resume de Metaphysique", "s102", 100, 'S', 1);
-		Title t4 = new Title("Meknassia", "a100", 30, 'A', 1); // 'A' == audioVideo
-		Title t5 = new Title("Pif", "m100", 10, 'M', 1); // 'M' == magazine
+		LoanableTitle t1 = new BookTitle("La religion perenne", "s100", 100, 3, true); // 'S' == bestSeller
+		LoanableTitle t2 = new BookTitle("Du Divin a l'humain", "s101", 100, 5, true);
+		LoanableTitle t3 = new BookTitle("Resume de Metaphysique", "s102", 100, 1, true);
+		LoanableTitle t4 = new AudioVideoTitle("Meknassia", "a100", 30, 1); // 'A' == audioVideo
+		NoLoanableTitle t5 = new MagazineTitle("Pif", "m100", 10, 1); // 'M' == magazine
 		
 		System.out.println("Ajout de 4 utilisateurs (Patron p1 a p4) a la librairie");
 		System.out.println(library.addPatron(p1));
