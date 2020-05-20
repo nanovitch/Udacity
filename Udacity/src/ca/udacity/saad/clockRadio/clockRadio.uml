@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_ORzM8JjbEeq7Ne74xgSvbw" name="clockRadio">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_ORzM8JjbEeq7Ne74xgSvbw" name="clockRadio">
+  <ownedComment xmi:type="uml:Comment" xmi:id="_UUamsJmLEeq7Ne74xgSvbw">
+    <body>EVENTS&#xD;
+---------&#xD;
+1. Volume Up&#xD;
+2. Volume DOWN&#xD;
+3. Select AM band&#xD;
+4. Select FM band&#xD;
+5. Choose station&#xD;
+6. Unplug&#xD;
+7. Plug in&#xD;
+8. Depress SLEEP button&#xD;
+9. Release SLEEP button&#xD;
+10. Depress WAKE button&#xD;
+11. Release WAKE button&#xD;
+12. Slide mode button from ON to OFF&#xD;
+13. Slide mode button from OFF to MUSIC&#xD;
+14. Slide mode button from MUSIC to ALARM&#xD;
+15. Slide mode button from ALARM to MUSIC&#xD;
+16. Slide mode button from MUSICto OFF&#xD;
+17. Slide mode button from OFF to ON&#xD;
+18. Hit SNOOZE&#xD;
+19. Depress HOUR button&#xD;
+20. Keep HOUR button pressed&#xD;
+21. Release HOUR button&#xD;
+22. Depress MIN button&#xD;
+23. Keep HOUR button pressed&#xD;
+24. Release MIN button&#xD;
+25. Snooze timer elapsed&#xD;
+26. Alarm timer elapsed&#xD;
+27. Sleep timer elapsed&#xD;
+28. Alarm max time elapsed&#xD;
+STATES&#xD;
+--------&#xD;
+58. mode is ON&#xD;
+59. mode is OFF&#xD;
+60. mode is MUSIC&#xD;
+61. mode is ALARM&#xD;
+62. mode is NOT ON</body>
+  </ownedComment>
   <packageImport xmi:type="uml:PackageImport" xmi:id="_OVDVQJjbEeq7Ne74xgSvbw">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -16,23 +55,145 @@
         </region>
       </subvertex>
       <subvertex xmi:type="uml:State" xmi:id="_dVHyAJlmEeq7Ne74xgSvbw" name="Plugged clock radio">
-        <region xmi:type="uml:Region" xmi:id="_g_ej4plmEeq7Ne74xgSvbw" name="Region1">
-          <subvertex xmi:type="uml:Pseudostate" xmi:id="_g_yF4JlmEeq7Ne74xgSvbw" name=""/>
-          <subvertex xmi:type="uml:FinalState" xmi:id="_h-MO4JlmEeq7Ne74xgSvbw" name=""/>
+        <region xmi:type="uml:Region" xmi:id="_T_HikJl_Eeq7Ne74xgSvbw" name="Sleeping">
+          <subvertex xmi:type="uml:State" xmi:id="_vnJRcJoiEeqyx5E27k2wOw" name="Sleeping">
+            <region xmi:type="uml:Region" xmi:id="_26MoUJoiEeqyx5E27k2wOw" name="Region1">
+              <transition xmi:type="uml:Transition" xmi:id="_Etmt0JojEeqyx5E27k2wOw" name="8" source="_P1230JonEeqyx5E27k2wOw" target="_8rG3AJoiEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_HLdQUJojEeqyx5E27k2wOw" name="9" source="_8rG3AJoiEeqyx5E27k2wOw" target="_4kyw0JpBEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_ubzDMJojEeqyx5E27k2wOw" name="19" source="_8rG3AJoiEeqyx5E27k2wOw" target="_mW48IJokEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_80QhEJokEeqyx5E27k2wOw" name="22" source="_8rG3AJoiEeqyx5E27k2wOw" target="_DVlo4JmdEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_y-sfQJomEeqyx5E27k2wOw" name="21" source="_mW48IJokEeqyx5E27k2wOw" target="_8rG3AJoiEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_51APwJomEeqyx5E27k2wOw" name="24" source="_DVlo4JmdEeq7Ne74xgSvbw" target="_8rG3AJoiEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_n5IEwJpBEeqyx5E27k2wOw" name="58" source="_4kyw0JpBEeqyx5E27k2wOw" target="_buf68JpBEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_PnLHUJpCEeqyx5E27k2wOw" name="62" source="_4kyw0JpBEeqyx5E27k2wOw" target="_T-kZoJonEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_blsGwJpNEeqyx5E27k2wOw" name="27" source="_buf68JpBEeqyx5E27k2wOw" target="_WsimgJpNEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_05wzEJpNEeqyx5E27k2wOw" name="58" source="_WsimgJpNEeqyx5E27k2wOw" target="_jLKqYJpNEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_B7iAQJpOEeqyx5E27k2wOw" name="62" source="_WsimgJpNEeqyx5E27k2wOw" target="_AMFb4JpOEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="__l0bMJpPEeqyx5E27k2wOw" source="_jLKqYJpNEeqyx5E27k2wOw" target="_T-kZoJonEeqyx5E27k2wOw"/>
+              <subvertex xmi:type="uml:State" xmi:id="_8rG3AJoiEeqyx5E27k2wOw" name="SleepDepressed"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_P1230JonEeqyx5E27k2wOw" name=""/>
+              <subvertex xmi:type="uml:FinalState" xmi:id="_T-kZoJonEeqyx5E27k2wOw" name=""/>
+              <subvertex xmi:type="uml:State" xmi:id="_buf68JpBEeqyx5E27k2wOw" name="SleepTimerActivate"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_4kyw0JpBEeqyx5E27k2wOw" name="Setting" kind="choice"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_WsimgJpNEeqyx5E27k2wOw" name="Setting" kind="choice"/>
+              <subvertex xmi:type="uml:State" xmi:id="_jLKqYJpNEeqyx5E27k2wOw" name="RadioOFF"/>
+              <subvertex xmi:type="uml:FinalState" xmi:id="_AMFb4JpOEeqyx5E27k2wOw" name=""/>
+            </region>
+          </subvertex>
         </region>
-        <region xmi:type="uml:Region" xmi:id="_TP328Jl_Eeq7Ne74xgSvbw" name="Region2"/>
-        <region xmi:type="uml:Region" xmi:id="_T_HikJl_Eeq7Ne74xgSvbw" name="Region3"/>
-        <region xmi:type="uml:Region" xmi:id="_UlLdAJl_Eeq7Ne74xgSvbw" name="Region4"/>
-        <region xmi:type="uml:Region" xmi:id="_VG1YkJl_Eeq7Ne74xgSvbw" name="Region5"/>
-        <region xmi:type="uml:Region" xmi:id="_W3myoJl_Eeq7Ne74xgSvbw" name="Region6"/>
-        <region xmi:type="uml:Region" xmi:id="_XpkbEJl_Eeq7Ne74xgSvbw" name="Region7"/>
-        <region xmi:type="uml:Region" xmi:id="_YVK80Jl_Eeq7Ne74xgSvbw" name="Region8"/>
-        <region xmi:type="uml:Region" xmi:id="_ZPJ40Jl_Eeq7Ne74xgSvbw" name="Region9"/>
-        <region xmi:type="uml:Region" xmi:id="_ZxbfcJl_Eeq7Ne74xgSvbw" name="Region10"/>
-        <region xmi:type="uml:Region" xmi:id="_aO9wAJl_Eeq7Ne74xgSvbw" name="Region11"/>
-        <region xmi:type="uml:Region" xmi:id="_bHodYJl_Eeq7Ne74xgSvbw" name="Region12"/>
-        <region xmi:type="uml:Region" xmi:id="_bqy00Jl_Eeq7Ne74xgSvbw" name="Region13"/>
-        <region xmi:type="uml:Region" xmi:id="_cZcDgJl_Eeq7Ne74xgSvbw" name="Region14"/>
+        <region xmi:type="uml:Region" xmi:id="_W3myoJl_Eeq7Ne74xgSvbw" name="Setting">
+          <subvertex xmi:type="uml:State" xmi:id="_yqrP8JmKEeq7Ne74xgSvbw" name="Setting">
+            <region xmi:type="uml:Region" xmi:id="_3md0gpmKEeq7Ne74xgSvbw" name="Region1">
+              <transition xmi:type="uml:Transition" xmi:id="_G7VlYJmOEeq7Ne74xgSvbw" name="12" source="_hWbZkJmNEeq7Ne74xgSvbw" target="_pGp0oJmNEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_TQ7CAJmOEeq7Ne74xgSvbw" name="13" source="_pGp0oJmNEeq7Ne74xgSvbw" target="_uXbxwJmNEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_V2fWEJmOEeq7Ne74xgSvbw" name="14" source="_uXbxwJmNEeq7Ne74xgSvbw" target="__gBDUJmNEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_iw9BYJmOEeq7Ne74xgSvbw" name="16" source="_uXbxwJmNEeq7Ne74xgSvbw" target="_pGp0oJmNEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_k6UhoJmOEeq7Ne74xgSvbw" name="17" source="_pGp0oJmNEeq7Ne74xgSvbw" target="_hWbZkJmNEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_E6yNcJmPEeq7Ne74xgSvbw" name="15" source="__gBDUJmNEeq7Ne74xgSvbw" target="_uXbxwJmNEeq7Ne74xgSvbw"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_3mhe4JmKEeq7Ne74xgSvbw" name=""/>
+              <subvertex xmi:type="uml:State" xmi:id="_hWbZkJmNEeq7Ne74xgSvbw" name="On"/>
+              <subvertex xmi:type="uml:State" xmi:id="_pGp0oJmNEeq7Ne74xgSvbw" name="Off"/>
+              <subvertex xmi:type="uml:State" xmi:id="_uXbxwJmNEeq7Ne74xgSvbw" name="Music"/>
+              <subvertex xmi:type="uml:State" xmi:id="__gBDUJmNEeq7Ne74xgSvbw" name="Alarm"/>
+            </region>
+          </subvertex>
+        </region>
+        <region xmi:type="uml:Region" xmi:id="_XpkbEJl_Eeq7Ne74xgSvbw" name="Listening">
+          <subvertex xmi:type="uml:State" xmi:id="_mIUJEJouEeqyx5E27k2wOw" name="Listening">
+            <region xmi:type="uml:Region" xmi:id="_lGj84JpJEeqyx5E27k2wOw" name="Region1">
+              <transition xmi:type="uml:Transition" xmi:id="_pw7HUJpWEeqyx5E27k2wOw" name="1" source="_lGnnQJpJEeqyx5E27k2wOw" target="_lGnnQJpJEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_Bv4a0JpXEeqyx5E27k2wOw" source="_pMkwAJpJEeqyx5E27k2wOw" target="_-jDScJpWEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_D75mcJpXEeqyx5E27k2wOw" source="_-jDScJpWEeqyx5E27k2wOw" target="_pMkwAJpJEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_QA-h4JpXEeqyx5E27k2wOw" name="5" source="_KE16oJpXEeqyx5E27k2wOw" target="_KE16oJpXEeqyx5E27k2wOw">
+                <effect xmi:type="uml:Interaction" xmi:id="_C5nYIJpZEeqyx5E27k2wOw" name="FreqBarSynchro" isReentrant="false"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_Radn4JpYEeqyx5E27k2wOw" name="2" source="_lGnnQJpJEeqyx5E27k2wOw" target="_lGnnQJpJEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_OAHygJpZEeqyx5E27k2wOw" source="_J5yPQJpZEeqyx5E27k2wOw" target="_J5yPQJpZEeqyx5E27k2wOw"/>
+              <subvertex xmi:type="uml:State" xmi:id="_lGnnQJpJEeqyx5E27k2wOw" name="VolumeButton"/>
+              <subvertex xmi:type="uml:State" xmi:id="_pMkwAJpJEeqyx5E27k2wOw" name="AM"/>
+              <subvertex xmi:type="uml:State" xmi:id="_-jDScJpWEeqyx5E27k2wOw" name="FM"/>
+              <subvertex xmi:type="uml:State" xmi:id="_KE16oJpXEeqyx5E27k2wOw" name="TuningButton"/>
+              <subvertex xmi:type="uml:State" xmi:id="_J5yPQJpZEeqyx5E27k2wOw" name="FreqBar"/>
+            </region>
+          </subvertex>
+        </region>
+        <region xmi:type="uml:Region" xmi:id="_b_XYkJotEeqyx5E27k2wOw" name="Region9">
+          <subvertex xmi:type="uml:State" xmi:id="_F_gZkJouEeqyx5E27k2wOw" name="Alarming">
+            <region xmi:type="uml:Region" xmi:id="_4VjqsJowEeqyx5E27k2wOw" name="Region1">
+              <transition xmi:type="uml:Transition" xmi:id="__1DEoJo8Eeqyx5E27k2wOw" name="10" source="_IqDz8JoxEeqyx5E27k2wOw" target="_4VmG8JowEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_BvrlUJo9Eeqyx5E27k2wOw" name="11" source="_4VmG8JowEeqyx5E27k2wOw" target="_SaqGIJpDEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_-rvdwJo9Eeqyx5E27k2wOw" name="19" source="_4VmG8JowEeqyx5E27k2wOw" target="_mW48IJokEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_Eq0EQJo-Eeqyx5E27k2wOw" name="22" source="_4VmG8JowEeqyx5E27k2wOw" target="_DVlo4JmdEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_rtVrUJpDEeqyx5E27k2wOw" name="yes" source="_SaqGIJpDEeqyx5E27k2wOw" target="_FklLkJpDEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_0qJOQJpDEeqyx5E27k2wOw" name="no" source="_SaqGIJpDEeqyx5E27k2wOw" target="_GxkoUJoxEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_jKb8gJpLEeqyx5E27k2wOw" name="60" source="_PHtOAJpLEeqyx5E27k2wOw" target="_6NbB4JpJEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_sc7bkJpLEeqyx5E27k2wOw" name="61" source="_PHtOAJpLEeqyx5E27k2wOw" target="_2kJ1IJpJEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_4qNQwJpLEeqyx5E27k2wOw" name="26" source="_FklLkJpDEeqyx5E27k2wOw" target="_PHtOAJpLEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_JIuRoJpMEeqyx5E27k2wOw" name="18" source="_2kJ1IJpJEeqyx5E27k2wOw" target="_aXSAoJpSEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_PEHSAJpMEeqyx5E27k2wOw" name="25" source="_AEos4JpKEeqyx5E27k2wOw" target="_j8hnIJpTEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_Rg818JpOEeqyx5E27k2wOw" name="18" source="_6NbB4JpJEeqyx5E27k2wOw" target="_aXSAoJpSEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_CsKZsJpTEeqyx5E27k2wOw" source="_aXSAoJpSEeqyx5E27k2wOw" target="_AEos4JpKEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_Dp9CMJpUEeqyx5E27k2wOw" name="18" source="_j8hnIJpTEeqyx5E27k2wOw" target="_AEos4JpKEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_YnEVUJpUEeqyx5E27k2wOw" name="28" source="_AEos4JpKEeqyx5E27k2wOw" target="_Pp2KYJpOEeqyx5E27k2wOw"/>
+              <subvertex xmi:type="uml:State" xmi:id="_4VmG8JowEeqyx5E27k2wOw" name="WakeDepressed"/>
+              <subvertex xmi:type="uml:FinalState" xmi:id="_GxkoUJoxEeqyx5E27k2wOw" name=""/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_IqDz8JoxEeqyx5E27k2wOw" name=""/>
+              <subvertex xmi:type="uml:State" xmi:id="_FklLkJpDEeqyx5E27k2wOw" name="AlarmTimerActive"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_SaqGIJpDEeqyx5E27k2wOw" name="mode=MusicORAlarm" kind="choice"/>
+              <subvertex xmi:type="uml:State" xmi:id="_2kJ1IJpJEeqyx5E27k2wOw" name="AlarmBeeping"/>
+              <subvertex xmi:type="uml:State" xmi:id="_6NbB4JpJEeqyx5E27k2wOw" name="RadioPlaying"/>
+              <subvertex xmi:type="uml:State" xmi:id="_AEos4JpKEeqyx5E27k2wOw" name="SpeakerOFF"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_PHtOAJpLEeqyx5E27k2wOw" name="mode" kind="choice"/>
+              <subvertex xmi:type="uml:FinalState" xmi:id="_Pp2KYJpOEeqyx5E27k2wOw" name=""/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_aXSAoJpSEeqyx5E27k2wOw" name="" kind="join"/>
+              <subvertex xmi:type="uml:State" xmi:id="_j8hnIJpTEeqyx5E27k2wOw" name="SpeakerON"/>
+            </region>
+          </subvertex>
+        </region>
+        <region xmi:type="uml:Region" xmi:id="_Z383wJo7Eeqyx5E27k2wOw" name="Timing">
+          <subvertex xmi:type="uml:State" xmi:id="_lEj38JosEeqyx5E27k2wOw" name="Timing">
+            <region xmi:type="uml:Region" xmi:id="_z0EZUJosEeqyx5E27k2wOw" name="Region1">
+              <transition xmi:type="uml:Transition" xmi:id="_BIUN4Jo-Eeqyx5E27k2wOw" name="21" source="_mW48IJokEeqyx5E27k2wOw" target="_4VmG8JowEeqyx5E27k2wOw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_GiBdgJo-Eeqyx5E27k2wOw" name="24" source="_DVlo4JmdEeq7Ne74xgSvbw" target="_4VmG8JowEeqyx5E27k2wOw"/>
+              <subvertex xmi:type="uml:State" xmi:id="_DVlo4JmdEeq7Ne74xgSvbw" name="MinSetting">
+                <region xmi:type="uml:Region" xmi:id="_Kg1HkJmdEeq7Ne74xgSvbw" name="Region1">
+                  <transition xmi:type="uml:Transition" xmi:id="_8PXa0JmhEeq7Ne74xgSvbw" name="23" kind="internal" source="_O9NW0JmeEeq7Ne74xgSvbw" target="_O9NW0JmeEeq7Ne74xgSvbw">
+                    <effect xmi:type="uml:Activity" xmi:id="_9bVn0JonEeqyx5E27k2wOw" name="MinInc"/>
+                  </transition>
+                  <subvertex xmi:type="uml:State" xmi:id="_O9NW0JmeEeq7Ne74xgSvbw" name="MinPressed"/>
+                </region>
+              </subvertex>
+              <subvertex xmi:type="uml:State" xmi:id="_mW48IJokEeqyx5E27k2wOw" name="HourSetting">
+                <region xmi:type="uml:Region" xmi:id="_EvPaoJolEeqyx5E27k2wOw" name="Region1">
+                  <transition xmi:type="uml:Transition" xmi:id="_Qiu20JolEeqyx5E27k2wOw" name="20" kind="internal" source="_EvTsEJolEeqyx5E27k2wOw" target="_EvTsEJolEeqyx5E27k2wOw">
+                    <effect xmi:type="uml:Activity" xmi:id="_Ze5EEJomEeqyx5E27k2wOw" name="HourInc"/>
+                  </transition>
+                  <subvertex xmi:type="uml:State" xmi:id="_EvTsEJolEeqyx5E27k2wOw" name="HourDepressed"/>
+                </region>
+              </subvertex>
+            </region>
+          </subvertex>
+        </region>
+        <region xmi:type="uml:Region" xmi:id="_sL7lcJo7Eeqyx5E27k2wOw" name="Displaying">
+          <transition xmi:type="uml:Transition" xmi:id="_6Oa3sJpaEeqyx5E27k2wOw" source="_8k4dAJmPEeq7Ne74xgSvbw" target="_8k4dAJmPEeq7Ne74xgSvbw"/>
+          <subvertex xmi:type="uml:State" xmi:id="_t2UW0JmPEeq7Ne74xgSvbw" name="Displaying">
+            <region xmi:type="uml:Region" xmi:id="_4jgSQJmPEeq7Ne74xgSvbw" name="Region1">
+              <transition xmi:type="uml:Transition" xmi:id="_m-_dMJmQEeq7Ne74xgSvbw" name="10" source="_4jjVkJmPEeq7Ne74xgSvbw" target="_ABo3wJmQEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_prEB4JmQEeq7Ne74xgSvbw" name="11" source="_ABo3wJmQEeq7Ne74xgSvbw" target="_4jjVkJmPEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_ss6pUJmQEeq7Ne74xgSvbw" name="8" source="_4jjVkJmPEeq7Ne74xgSvbw" target="_8k4dAJmPEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_yj_KYJmQEeq7Ne74xgSvbw" name="9" source="_8k4dAJmPEeq7Ne74xgSvbw" target="_4jjVkJmPEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_OZ0PcJpaEeqyx5E27k2wOw" source="_4jjVkJmPEeq7Ne74xgSvbw" target="_4jjVkJmPEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_XnZZUJpaEeqyx5E27k2wOw" source="_4jjVkJmPEeq7Ne74xgSvbw" target="_4jjVkJmPEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_daSlAJpaEeqyx5E27k2wOw" source="_ABo3wJmQEeq7Ne74xgSvbw" target="_ABo3wJmQEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_jFaUwJpaEeqyx5E27k2wOw" source="_ABo3wJmQEeq7Ne74xgSvbw" target="_ABo3wJmQEeq7Ne74xgSvbw"/>
+              <transition xmi:type="uml:Transition" xmi:id="_wW7OIJpaEeqyx5E27k2wOw" source="_8k4dAJmPEeq7Ne74xgSvbw" target="_8k4dAJmPEeq7Ne74xgSvbw"/>
+              <subvertex xmi:type="uml:State" xmi:id="_4jjVkJmPEeq7Ne74xgSvbw" name="ClockTime"/>
+              <subvertex xmi:type="uml:State" xmi:id="_8k4dAJmPEeq7Ne74xgSvbw" name="SleepTime"/>
+              <subvertex xmi:type="uml:State" xmi:id="_ABo3wJmQEeq7Ne74xgSvbw" name="AlarmTime"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_LkSbkJmQEeq7Ne74xgSvbw" name=""/>
+            </region>
+          </subvertex>
+        </region>
       </subvertex>
     </region>
   </packagedElement>
@@ -45,8 +206,12 @@
     <packagedElement xmi:type="uml:UseCase" xmi:id="_KoXjgJlcEeq7Ne74xgSvbw" name="Unplugg in"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_IHO8IJlfEeq7Ne74xgSvbw" name="Listening">
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_OkrBAJlcEeq7Ne74xgSvbw" name="Power on"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_P4XdgJlcEeq7Ne74xgSvbw" name="Power off"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_OkrBAJlcEeq7Ne74xgSvbw" name="Power on">
+      <include xmi:type="uml:Include" xmi:id="_De_l4JmEEeq7Ne74xgSvbw" addition="_d5Vb4JlyEeq7Ne74xgSvbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_P4XdgJlcEeq7Ne74xgSvbw" name="Power off">
+      <include xmi:type="uml:Include" xmi:id="_E0W2UJmEEeq7Ne74xgSvbw" addition="_Kft40JmTEeq7Ne74xgSvbw"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_dsNA0JlcEeq7Ne74xgSvbw" name="Listen to a station">
       <extend xmi:type="uml:Extend" xmi:id="_-A_vIJliEeq7Ne74xgSvbw" extendedCase="_tVks8JldEeq7Ne74xgSvbw" extensionLocation="_-BCycJliEeq7Ne74xgSvbw"/>
       <extend xmi:type="uml:Extend" xmi:id="_B46I8JlwEeq7Ne74xgSvbw" extendedCase="_3pqGsJlvEeq7Ne74xgSvbw" extensionLocation="_B46wAJlwEeq7Ne74xgSvbw"/>
@@ -68,52 +233,68 @@
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_KnqRgJlfEeq7Ne74xgSvbw" name="Timing">
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_kbUAUJlgEeq7Ne74xgSvbw" name="Set sleep time">
-      <include xmi:type="uml:Include" xmi:id="_mChh0Jl4Eeq7Ne74xgSvbw" addition="_Sl_YAJl1Eeq7Ne74xgSvbw"/>
-      <include xmi:type="uml:Include" xmi:id="_pilvQJl4Eeq7Ne74xgSvbw" addition="_1QbWwJl1Eeq7Ne74xgSvbw"/>
-      <include xmi:type="uml:Include" xmi:id="_sMa4QJl4Eeq7Ne74xgSvbw" addition="_VP_gIJl1Eeq7Ne74xgSvbw"/>
-      <include xmi:type="uml:Include" xmi:id="_u8RJsJl4Eeq7Ne74xgSvbw" addition="_Ykym0Jl3Eeq7Ne74xgSvbw"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_pkcgcJooEeqyx5E27k2wOw" name="MinSetting">
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_dXgu8Jl3Eeq7Ne74xgSvbw" name="Depress MIN button">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_DrFnQJorEeqyx5E27k2wOw" name="ExtensionPoint2"/>
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_FVT38JosEeqyx5E27k2wOw" name="ExtensionPoint3"/>
+        <include xmi:type="uml:Include" xmi:id="_JerL8JoqEeqyx5E27k2wOw" addition="_GXBT8JopEeqyx5E27k2wOw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_gFqXQJl3Eeq7Ne74xgSvbw" name="Release MIN button">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_FNz-QJorEeqyx5E27k2wOw" name="ExtensionPoint1"/>
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_KBmA4JosEeqyx5E27k2wOw" name="ExtensionPoint2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_GXBT8JopEeqyx5E27k2wOw" name="IncMIN"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_gupBoJldEeq7Ne74xgSvbw" name="Set clock time">
-      <include xmi:type="uml:Include" xmi:id="_5EZlYJl6Eeq7Ne74xgSvbw" addition="_VP_gIJl1Eeq7Ne74xgSvbw"/>
-      <include xmi:type="uml:Include" xmi:id="_5-ZvgJl6Eeq7Ne74xgSvbw" addition="_Ykym0Jl3Eeq7Ne74xgSvbw"/>
-      <include xmi:type="uml:Include" xmi:id="_6x5pAJl6Eeq7Ne74xgSvbw" addition="_dXgu8Jl3Eeq7Ne74xgSvbw"/>
-      <include xmi:type="uml:Include" xmi:id="_7rMBcJl6Eeq7Ne74xgSvbw" addition="_gFqXQJl3Eeq7Ne74xgSvbw"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_ojXBcJopEeqyx5E27k2wOw" name="HourSetting">
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_VP_gIJl1Eeq7Ne74xgSvbw" name="DepressHOUR button">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_A09HoJorEeqyx5E27k2wOw" name="ExtensionPoint2"/>
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_wS2x0JorEeqyx5E27k2wOw" name="ExtensionPoint3"/>
+        <include xmi:type="uml:Include" xmi:id="_KeY8gJoqEeqyx5E27k2wOw" addition="__zF3cJopEeqyx5E27k2wOw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_Ykym0Jl3Eeq7Ne74xgSvbw" name="Release HOUR button">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_CSn_gJorEeqyx5E27k2wOw" name="ExtensionPoint1"/>
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_D_LygJosEeqyx5E27k2wOw" name="ExtensionPoint2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="__zF3cJopEeqyx5E27k2wOw" name="IncHour"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_gERHkJlgEeq7Ne74xgSvbw" name="Set alarm time">
-      <include xmi:type="uml:Include" xmi:id="_ztHXoJl6Eeq7Ne74xgSvbw" addition="_vibSIJl1Eeq7Ne74xgSvbw"/>
-      <include xmi:type="uml:Include" xmi:id="_0vQKEJl6Eeq7Ne74xgSvbw" addition="_MY-cIJl1Eeq7Ne74xgSvbw"/>
-      <include xmi:type="uml:Include" xmi:id="_2Um-UJl6Eeq7Ne74xgSvbw" addition="_dXgu8Jl3Eeq7Ne74xgSvbw"/>
-      <include xmi:type="uml:Include" xmi:id="_3JTKoJl6Eeq7Ne74xgSvbw" addition="_gFqXQJl3Eeq7Ne74xgSvbw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_vibSIJl1Eeq7Ne74xgSvbw" name="Release WAKE button"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_1QbWwJl1Eeq7Ne74xgSvbw" name="Release SLEEP button"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_MY-cIJl1Eeq7Ne74xgSvbw" name="Depress WAKE button"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_Sl_YAJl1Eeq7Ne74xgSvbw" name="Depress SLEEP button"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_VP_gIJl1Eeq7Ne74xgSvbw" name="DepressHOUR button"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_Ykym0Jl3Eeq7Ne74xgSvbw" name="Release HOUR button"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_dXgu8Jl3Eeq7Ne74xgSvbw" name="Depress MIN button"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_gFqXQJl3Eeq7Ne74xgSvbw" name="Release MIN button"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_OtQN4JlfEeq7Ne74xgSvbw" name="Alarming">
     <packagedElement xmi:type="uml:UseCase" xmi:id="_YaKfcJlcEeq7Ne74xgSvbw" name="Program radio alarm">
-      <include xmi:type="uml:Include" xmi:id="_FJC6cJlkEeq7Ne74xgSvbw" addition="_gERHkJlgEeq7Ne74xgSvbw"/>
+      <include xmi:type="uml:Include" xmi:id="_zaSKIJmZEeq7Ne74xgSvbw" addition="_h3-J8JmZEeq7Ne74xgSvbw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_13LaQJlgEeq7Ne74xgSvbw" name="Program beep alarm">
-      <include xmi:type="uml:Include" xmi:id="_HOYPQJlkEeq7Ne74xgSvbw" addition="_gERHkJlgEeq7Ne74xgSvbw"/>
+      <include xmi:type="uml:Include" xmi:id="_yb9gsJmZEeq7Ne74xgSvbw" addition="_h3-J8JmZEeq7Ne74xgSvbw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_sXnFUJlcEeq7Ne74xgSvbw" name="Stop alarm">
       <extend xmi:type="uml:Extend" xmi:id="_tK96QJlvEeq7Ne74xgSvbw" extendedCase="_eMcFcJlvEeq7Ne74xgSvbw" extensionLocation="_tK-hUJlvEeq7Ne74xgSvbw"/>
+      <extend xmi:type="uml:Extend" xmi:id="_TaHA8JmTEeq7Ne74xgSvbw" extendedCase="_Kft40JmTEeq7Ne74xgSvbw" extensionLocation="_TaIPEJmTEeq7Ne74xgSvbw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_eMcFcJlvEeq7Ne74xgSvbw" name="Hit snooze">
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_tK-hUJlvEeq7Ne74xgSvbw" name="ExtensionPoint1"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_vibSIJl1Eeq7Ne74xgSvbw" name="Release WAKE button"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_MY-cIJl1Eeq7Ne74xgSvbw" name="Depress WAKE button"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_h3-J8JmZEeq7Ne74xgSvbw" name="Set alarm time">
+      <extend xmi:type="uml:Extend" xmi:id="_A05dQJorEeqyx5E27k2wOw" extendedCase="_VP_gIJl1Eeq7Ne74xgSvbw" extensionLocation="_A09HoJorEeqyx5E27k2wOw"/>
+      <extend xmi:type="uml:Extend" xmi:id="_CSnYcJorEeqyx5E27k2wOw" extendedCase="_Ykym0Jl3Eeq7Ne74xgSvbw" extensionLocation="_CSn_gJorEeqyx5E27k2wOw"/>
+      <extend xmi:type="uml:Extend" xmi:id="_DrEZIJorEeqyx5E27k2wOw" extendedCase="_dXgu8Jl3Eeq7Ne74xgSvbw" extensionLocation="_DrFnQJorEeqyx5E27k2wOw"/>
+      <extend xmi:type="uml:Extend" xmi:id="_FNzXMJorEeqyx5E27k2wOw" extendedCase="_gFqXQJl3Eeq7Ne74xgSvbw" extensionLocation="_FNz-QJorEeqyx5E27k2wOw"/>
+      <include xmi:type="uml:Include" xmi:id="_u-O1kJmZEeq7Ne74xgSvbw" addition="_MY-cIJl1Eeq7Ne74xgSvbw"/>
+      <include xmi:type="uml:Include" xmi:id="_wAj1QJmZEeq7Ne74xgSvbw" addition="_vibSIJl1Eeq7Ne74xgSvbw"/>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_eSNJgJlfEeq7Ne74xgSvbw" client="_TGab8JleEeq7Ne74xgSvbw" supplier="_i_mswJlfEeq7Ne74xgSvbw"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_i_mswJlfEeq7Ne74xgSvbw" name="Sleeping">
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_azmUoJlfEeq7Ne74xgSvbw" name="Program sleep mode">
-      <include xmi:type="uml:Include" xmi:id="_91nJEJljEeq7Ne74xgSvbw" addition="_kbUAUJlgEeq7Ne74xgSvbw"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_kbUAUJlgEeq7Ne74xgSvbw" name="Set sleep time">
+      <extend xmi:type="uml:Extend" xmi:id="_wS1jsJorEeqyx5E27k2wOw" extendedCase="_VP_gIJl1Eeq7Ne74xgSvbw" extensionLocation="_wS2x0JorEeqyx5E27k2wOw"/>
+      <extend xmi:type="uml:Extend" xmi:id="_D_KkYJosEeqyx5E27k2wOw" extendedCase="_Ykym0Jl3Eeq7Ne74xgSvbw" extensionLocation="_D_LygJosEeqyx5E27k2wOw"/>
+      <extend xmi:type="uml:Extend" xmi:id="_FVTQ4JosEeqyx5E27k2wOw" extendedCase="_dXgu8Jl3Eeq7Ne74xgSvbw" extensionLocation="_FVT38JosEeqyx5E27k2wOw"/>
+      <extend xmi:type="uml:Extend" xmi:id="_KBkywJosEeqyx5E27k2wOw" extendedCase="_gFqXQJl3Eeq7Ne74xgSvbw" extensionLocation="_KBmA4JosEeqyx5E27k2wOw"/>
+      <include xmi:type="uml:Include" xmi:id="_mChh0Jl4Eeq7Ne74xgSvbw" addition="_Sl_YAJl1Eeq7Ne74xgSvbw"/>
+      <include xmi:type="uml:Include" xmi:id="_pilvQJl4Eeq7Ne74xgSvbw" addition="_1QbWwJl1Eeq7Ne74xgSvbw"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Sl_YAJl1Eeq7Ne74xgSvbw" name="Depress SLEEP button"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_1QbWwJl1Eeq7Ne74xgSvbw" name="Release SLEEP button"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_XIZt4JliEeq7Ne74xgSvbw" name="Displaying">
     <packagedElement xmi:type="uml:UseCase" xmi:id="_cuBSkJliEeq7Ne74xgSvbw" name="Read clock time"/>
@@ -138,25 +319,25 @@
     <region xmi:type="uml:Region" xmi:id="_2cdwQJluEeq7Ne74xgSvbw" name="Region14"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_ygh0QJlwEeq7Ne74xgSvbw" name="Setting">
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_1Lm6cJlwEeq7Ne74xgSvbw" name="Select mode">
-      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_8KiwkJlyEeq7Ne74xgSvbw" name="ExtensionPoint1"/>
-      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_9SLuEJlyEeq7Ne74xgSvbw" name="ExtensionPoint2"/>
-      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_-vOT0ZlyEeq7Ne74xgSvbw" name="ExtensionPoint3"/>
-      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_AlbngJlzEeq7Ne74xgSvbw" name="ExtensionPoint4"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_d5Vb4JlyEeq7Ne74xgSvbw" name="Select ON position">
-      <extend xmi:type="uml:Extend" xmi:id="_8KiJgJlyEeq7Ne74xgSvbw" extendedCase="_1Lm6cJlwEeq7Ne74xgSvbw" extensionLocation="_8KiwkJlyEeq7Ne74xgSvbw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_o4VgEJlyEeq7Ne74xgSvbw" name="Select OFF position">
-      <extend xmi:type="uml:Extend" xmi:id="_9SLHAJlyEeq7Ne74xgSvbw" extendedCase="_1Lm6cJlwEeq7Ne74xgSvbw" extensionLocation="_9SLuEJlyEeq7Ne74xgSvbw"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_aiK6sJmREeq7Ne74xgSvbw" name="ExtensionPoint1"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_sXw0UJlyEeq7Ne74xgSvbw" name="Select Music position">
-      <extend xmi:type="uml:Extend" xmi:id="_-vOT0JlyEeq7Ne74xgSvbw" extendedCase="_1Lm6cJlwEeq7Ne74xgSvbw" extensionLocation="_-vOT0ZlyEeq7Ne74xgSvbw"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_dR7FgJmREeq7Ne74xgSvbw" name="ExtensionPoint1"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_3X0BYJlyEeq7Ne74xgSvbw" name="Select Alarm position">
-      <extend xmi:type="uml:Extend" xmi:id="_AlbAcJlzEeq7Ne74xgSvbw" extendedCase="_1Lm6cJlwEeq7Ne74xgSvbw" extensionLocation="_AlbngJlzEeq7Ne74xgSvbw"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_cFw0YJmREeq7Ne74xgSvbw" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Kft40JmTEeq7Ne74xgSvbw" name="Select OFF position">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_TaIPEJmTEeq7Ne74xgSvbw" name="ExtensionPoint1"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_zi5PMJl7Eeq7Ne74xgSvbw" client="_qdsrcJleEeq7Ne74xgSvbw" supplier="_gupBoJldEeq7Ne74xgSvbw"/>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_7ANf4Jl8Eeq7Ne74xgSvbw" client="_zi5PMJl7Eeq7Ne74xgSvbw" supplier="_ygh0QJlwEeq7Ne74xgSvbw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_7ANf4Jl8Eeq7Ne74xgSvbw" client="_TGab8JleEeq7Ne74xgSvbw" supplier="_ygh0QJlwEeq7Ne74xgSvbw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_ZD3GMJosEeqyx5E27k2wOw" client="_TGab8JleEeq7Ne74xgSvbw" supplier="_KnqRgJlfEeq7Ne74xgSvbw"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_RLg0sJmOEeq7Ne74xgSvbw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_RLkfEJmOEeq7Ne74xgSvbw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
 </uml:Model>
