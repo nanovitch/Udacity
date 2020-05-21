@@ -8,7 +8,7 @@ public class King extends Piece {
 	
 	public boolean isValideMove(final Position dest, final Board board) { 
 		
-		boolean isMovePrecMeet = this.isMovePrecMeet(dest, board);
+		boolean isMovePrecMeet = this.isMovePreconditionsMeet(dest, board);
 		
 		// debug
 			System.out.println("isMovePreconditionsMeet: " + isMovePrecMeet);

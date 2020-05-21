@@ -32,7 +32,11 @@ public abstract class Piece {
 		this.setPosition(newPosition);
 	}
 	
-	public boolean isMovePrecMeet(final Position dest, final Board board) { 
+	// Before checking the piece move validity, we have to check these preconditions:
+	// 1. The destination position in in board limits.
+	// 2. The path between the source and final position is clear (no other piece between) expect for "knight"
+	// 3. The destination case is either empty or its contained piece color is different from the moved piece one
+	public boolean isMovePreconditionsMeet(final Position dest, final Board board) { 
 		Piece pieceToEat = board.getThePieceOnBoard(dest);
 		boolean isInBoardMove = dest.isInBoardMove();
 		// the path is always clear for the knight because it can jump over other pieces
