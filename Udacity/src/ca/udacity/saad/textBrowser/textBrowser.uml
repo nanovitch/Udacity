@@ -262,4 +262,31 @@ l &lt;= L and Cv >= 0 and Cv &lt; (L-l) and Vc=Fc->subSequence(Cv,Cv+l)</body>
     </ownedEnd>
     <ownedEnd xmi:type="uml:Property" xmi:id="_pBT1MZz8EeqekI-obtrxDA" name="viewport" type="_xZKSoJvYEeqoS4YkuFKu2A" association="_pBOVoJz8EeqekI-obtrxDA"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_UC5JYJ3fEeqekI-obtrxDA" name="ViewPortComponent">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FB9aoJ38EeqekI-obtrxDA" name="fileManager" type="_ZvLWwJ3fEeqekI-obtrxDA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_XPnd4J38EeqekI-obtrxDA" name="scrollBar" type="_XnClkJ3fEeqekI-obtrxDA"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_vSpHIJ3-EeqekI-obtrxDA" name="viewPortPort" aggregation="composite"/>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_XolQIJ3_EeqekI-obtrxDA" name="Connector6">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_XonsYJ3_EeqekI-obtrxDA" partWithPort="_FB9aoJ38EeqekI-obtrxDA" role="_TmAykJ3_EeqekI-obtrxDA"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_XooTcJ3_EeqekI-obtrxDA" partWithPort="_XPnd4J38EeqekI-obtrxDA" role="_VfOW8J3_EeqekI-obtrxDA"/>
+    </ownedConnector>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_yMKDAJ3fEeqekI-obtrxDA" name="ViewContents" client="_UC5JYJ3fEeqekI-obtrxDA" supplier="_ZvLWwJ3fEeqekI-obtrxDA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_D4IVgJ3gEeqekI-obtrxDA" name="HandlePosition" client="_UC5JYJ3fEeqekI-obtrxDA" supplier="_XnClkJ3fEeqekI-obtrxDA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_XnClkJ3fEeqekI-obtrxDA" name="ScrollBarComponent">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_uPjZ0J37EeqekI-obtrxDA" name="fileManager" type="_ZvLWwJ3fEeqekI-obtrxDA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_j5YawJ38EeqekI-obtrxDA" name="viewPort" type="_UC5JYJ3fEeqekI-obtrxDA"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_VfOW8J3_EeqekI-obtrxDA" name="scrollBarPort" aggregation="composite"/>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_6K8GYJ3-EeqekI-obtrxDA" name="Connector5">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_6K_wwJ3-EeqekI-obtrxDA" partWithPort="_uPjZ0J37EeqekI-obtrxDA" role="_nov9kJ3-EeqekI-obtrxDA"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_6LAX0J3-EeqekI-obtrxDA" partWithPort="_j5YawJ38EeqekI-obtrxDA" role="_vSpHIJ3-EeqekI-obtrxDA"/>
+    </ownedConnector>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_vgNaIJ3fEeqekI-obtrxDA" name="HandleProportionDisplayedLinesNumber" client="_XnClkJ3fEeqekI-obtrxDA" supplier="_UC5JYJ3fEeqekI-obtrxDA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_2vj8wJ3fEeqekI-obtrxDA" name="HandleProportionDocumentSize" client="_XnClkJ3fEeqekI-obtrxDA" supplier="_ZvLWwJ3fEeqekI-obtrxDA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_ZvLWwJ3fEeqekI-obtrxDA" name="FileManagerComponent">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_Ws5V4J39EeqekI-obtrxDA" name="fileManagerPort" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_nov9kJ3-EeqekI-obtrxDA" name="fileManagerPort1" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_TmAykJ3_EeqekI-obtrxDA" name="fileManagerPort2" aggregation="composite"/>
+  </packagedElement>
 </uml:Model>
