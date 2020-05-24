@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_GXblsJvAEeqoS4YkuFKu2A" name="textBrowser">
+  <ownedComment xmi:type="uml:Comment" xmi:id="_Z4tjQJvcEeqoS4YkuFKu2A">
+    <body>1. FileManager dynamicaly supplies MAX_LINES = 10 strings to Viewport.&#xD;
+2. ViewPort can load and display a maximum of MAX_LINES whichever is his size&#xD;
+3. We consider that the ViewPort width is fixed by construction and is equal to the file line length. Only his height can change. So, his width is simply ignored.&#xD;
+4. The viewContents parameter represents the file lignes that are currently in the ViewPort buffer. Their number is always MAX_LINES.&#xD;
+5. The number of lines that are visible in the ViewPort windows varies between 0 and MAX_LINES dependently of the window actual size.</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_ZGK7IJwgEeqhs8bEy6gyBg">
+    <body>1. Menu option to choose a document&#xD;
+2. Scrollbar with handle&#xD;
+3. Resizable window</body>
+  </ownedComment>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_GgieYJvAEeqoS4YkuFKu2A">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_uh1gMJvYEeqoS4YkuFKu2A" name="FileManager">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Wy5W8JveEeqoS4YkuFKu2A" name="fileContents">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_mgI8AJwXEeqhs8bEy6gyBg" name="getContents" isQuery="true">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_GdVcEJ0CEeqekI-obtrxDA" name="getContentsPreCond">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_GdbisJ0CEeqekI-obtrxDA" name="constraintSpec">
+          <language>OCL</language>
+          <body>numberOfLines >= 0 and numberOfLines &lt;= fileContents->size()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_x1cAUJwXEeqhs8bEy6gyBg" name="numberOfLines" effect="read">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_0_mZ4J0BEeqekI-obtrxDA" name="contents" direction="return" effect="read">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3G5dkJ0BEeqekI-obtrxDA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3CsTAJ0BEeqekI-obtrxDA" value="*"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_xZKSoJvYEeqoS4YkuFKu2A" name="ViewPort">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_jiGp8JvdEeqoS4YkuFKu2A" name="height">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MjYO8JveEeqoS4YkuFKu2A" name="viewContents">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rks5YJ2IEeqekI-obtrxDA" name="MAX_LINES" value="10"/>
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_tiElAJ2IEeqekI-obtrxDA" name="MAX_LINES" value="10"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_mPKoIJwUEeqhs8bEy6gyBg" name="MAX_LINES">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_Rba28JwVEeqhs8bEy6gyBg" value="10"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IgJAIJzoEeqekI-obtrxDA" name="visibleLinesNumber">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_t2mYkJvdEeqoS4YkuFKu2A" name="resizeWindow" postcondition="_t-cYMJzpEeqekI-obtrxDA">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_t-cYMJzpEeqekI-obtrxDA" name="resizeWindowPostCond">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_t-eNYJzpEeqekI-obtrxDA" name="constraintSpec">
+          <language>OCL</language>
+          <body>height=newHeight</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_3octcJzrEeqekI-obtrxDA" name="resizeWindowPreCond">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_3oeioJzrEeqekI-obtrxDA" name="constraintSpec">
+          <language>OCL</language>
+          <body>newHeight>=0</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_EsIl4JveEeqoS4YkuFKu2A" name="newHeight" effect="update">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_fC_6AJvgEeqoS4YkuFKu2A" name="GetNumberOfVisibleLines" isQuery="true">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_Qzr2wJ0AEeqekI-obtrxDA" name="getNumberOfVisibleLinesPostCond">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_QzxWUJ0AEeqekI-obtrxDA" name="constraintSpec">
+          <language>OCL</language>
+          <body>visibleLinesNumber >= 0 and visibleLinesNumber &lt;= MAX_LINES</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_w4FFMJvgEeqoS4YkuFKu2A" name="visibleLines" direction="return" effect="read">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ZjkNcJz_EeqekI-obtrxDA" name="getHeight">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_8D7DIJz_EeqekI-obtrxDA" name="getHeightPostCond">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_8D84UJz_EeqekI-obtrxDA" name="constraintSpec">
+          <language>OCL</language>
+          <body>height > 0</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_yNr90Jz_EeqekI-obtrxDA" name="height" direction="return" effect="read">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zqrCQJvYEeqoS4YkuFKu2A" name="ScrollBar">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_noFLYJveEeqoS4YkuFKu2A" name="handleProportion" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_r7dsIJveEeqoS4YkuFKu2A" name="handlePosition">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_04ppkJveEeqoS4YkuFKu2A" name="moveHandle" postcondition="_c_E7wJzjEeqekI-obtrxDA" precondition="_iNPToJzsEeqekI-obtrxDA">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_c_E7wJzjEeqekI-obtrxDA" name="moveHandlePostCond">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_c_Qh8JzjEeqekI-obtrxDA" name="constraintSpec">
+          <language>OCL</language>
+          <body>handlePosition=newPosition</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_iNPToJzsEeqekI-obtrxDA" name="moveHandlePreCond">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_iNRI0JzsEeqekI-obtrxDA" name="constraintSpec">
+          <language>OCL</language>
+          <body>newPosition>=0 and newPosition&lt;viewport.height</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_7px_IJveEeqoS4YkuFKu2A" name="newPosition" effect="update">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_E3g_kJwXEeqhs8bEy6gyBg" name="getHandlePosition" isQuery="true">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_BMPIIJz9EeqekI-obtrxDA" name="getHandlePositionPostCond">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_BMVOwJz9EeqekI-obtrxDA" name="constraintSpec">
+          <language>OCL</language>
+          <body>handlePosition >=0 and handlePosition &lt; viewport.height</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZBFV4JwXEeqhs8bEy6gyBg" name="handlePosition" direction="return" effect="read">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IB5Q4JwXEeqhs8bEy6gyBg" name="getHandleProportion" isQuery="true">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_p2rUwJztEeqekI-obtrxDA" name="getHandleProportionPreCond">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_p2w0UJztEeqekI-obtrxDA" name="constraintSpec">
+          <language>OCL</language>
+          <body>handleproportion.filemanager.fileContents->size()>0</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_AmfUkJzuEeqekI-obtrxDA" name="getHandleProportionPostCond">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_AmhJwJzuEeqekI-obtrxDA" name="constraintSpec">
+          <language>OCL</language>
+          <body>handleProportion=handleproportion.viewport.visibleLinesNumber/handleproportion.filemanager.fileContents->size()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jnDPAJwXEeqhs8bEy6gyBg" name="hProportion" direction="return" effect="read">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_3luikJvYEeqoS4YkuFKu2A" name="NumberOfVisibleLines" memberEnd="_3l2eYJvYEeqoS4YkuFKu2A _3l4TkJvYEeqoS4YkuFKu2A" navigableOwnedEnd="_3l4TkJvYEeqoS4YkuFKu2A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3lzbEJvYEeqoS4YkuFKu2A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3l0CIJvYEeqoS4YkuFKu2A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_zX7MAJ2yEeqekI-obtrxDA" name="numberOfVisibleLinesAssociationInvariant">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_zYCgwJ2yEeqekI-obtrxDA" name="constraintSpec">
+        <language>OCL</language>
+        <body>let vl=viewport.visibleLinesNumber in&#xD;
+vl = viewport.height.min(filemanager.fileContents->size()) and vl >= 0 and vl &lt;= viewport.MAX_LINES</body>
+      </specification>
+    </ownedRule>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_3l4TkJvYEeqoS4YkuFKu2A" name="filemanager" type="_uh1gMJvYEeqoS4YkuFKu2A" association="_3luikJvYEeqoS4YkuFKu2A"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_3l2eYJvYEeqoS4YkuFKu2A" name="viewport" type="_xZKSoJvYEeqoS4YkuFKu2A" association="_3luikJvYEeqoS4YkuFKu2A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3l3sgJvYEeqoS4YkuFKu2A"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3l3sgZvYEeqoS4YkuFKu2A" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_jVbMIJwaEeqhs8bEy6gyBg" name="Reader"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_lpXksJwaEeqhs8bEy6gyBg" name="OS"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_ndAskJwaEeqhs8bEy6gyBg" name="Load text">
+    <include xmi:type="uml:Include" xmi:id="_HJaM4JwbEeqhs8bEy6gyBg" addition="_7VTFoJwaEeqhs8bEy6gyBg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_sXVRgJwaEeqhs8bEy6gyBg" name="Browse text"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_z7gNkJwaEeqhs8bEy6gyBg" name="Resize window"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_7VTFoJwaEeqhs8bEy6gyBg" name="Open window"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_-qqe8JwaEeqhs8bEy6gyBg" name="Close windows"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_DBacwJwbEeqhs8bEy6gyBg" client="_jVbMIJwaEeqhs8bEy6gyBg" supplier="_ndAskJwaEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_EDqj8JwbEeqhs8bEy6gyBg" client="_jVbMIJwaEeqhs8bEy6gyBg" supplier="_sXVRgJwaEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_E58rsJwbEeqhs8bEy6gyBg" client="_EDqj8JwbEeqhs8bEy6gyBg" supplier="_z7gNkJwaEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_FsimQJwbEeqhs8bEy6gyBg" client="_EDqj8JwbEeqhs8bEy6gyBg" supplier="_-qqe8JwaEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_IS69MJwcEeqhs8bEy6gyBg" name="TextBrowser"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_ORraoJwcEeqhs8bEy6gyBg" name="User"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_Qq-0UJwcEeqhs8bEy6gyBg" name="Open" client="_ORraoJwcEeqhs8bEy6gyBg" supplier="_IS69MJwcEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_bFPzwJwcEeqhs8bEy6gyBg" name="Load text" client="_ORraoJwcEeqhs8bEy6gyBg" supplier="_IS69MJwcEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_fsJtcJwcEeqhs8bEy6gyBg" name="Move the handle" client="_ORraoJwcEeqhs8bEy6gyBg" supplier="_IS69MJwcEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_mMd_0JwcEeqhs8bEy6gyBg" name="Resize" client="_ORraoJwcEeqhs8bEy6gyBg" supplier="_IS69MJwcEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_rbtr4JwcEeqhs8bEy6gyBg" name="Close" client="_GXblsJvAEeqoS4YkuFKu2A" supplier="_IS69MJwcEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_9EpRcJwcEeqhs8bEy6gyBg" name="Get FileManager interface" client="_IS69MJwcEeqhs8bEy6gyBg" supplier="_lpXksJwaEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_UvGUkJwdEeqhs8bEy6gyBg" name="Load file" client="_IS69MJwcEeqhs8bEy6gyBg" supplier="_lpXksJwaEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_W7f6sJwdEeqhs8bEy6gyBg" name="Get contents" client="_IS69MJwcEeqhs8bEy6gyBg" supplier="_lpXksJwaEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_cRnDwJwdEeqhs8bEy6gyBg" name="Release resource" client="_IS69MJwcEeqhs8bEy6gyBg" supplier="_lpXksJwaEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_dBw44JweEeqhs8bEy6gyBg" name="Display window with scrollbar handle and menu" client="_IS69MJwcEeqhs8bEy6gyBg" supplier="_ORraoJwcEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_-Dje0JweEeqhs8bEy6gyBg" name="Load the first ten lines from the document" client="_IS69MJwcEeqhs8bEy6gyBg" supplier="_ORraoJwcEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_lLqiwJwfEeqhs8bEy6gyBg" name="Scroll text and load new contents from doc when needed" client="_IS69MJwcEeqhs8bEy6gyBg" supplier="_ORraoJwcEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_3wiMIJwfEeqhs8bEy6gyBg" name="Change win size adjust handle proportion update diplayed lines" client="_IS69MJwcEeqhs8bEy6gyBg" supplier="_ORraoJwcEeqhs8bEy6gyBg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_pDBUIJz2EeqekI-obtrxDA" name="ViewContents">
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_4c37kJ0NEeqekI-obtrxDA" name="ViewContentsInvariant">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_4c_QUJ0NEeqekI-obtrxDA" name="constraintSpec">
+        <language>OCL</language>
+        <body>let L = filemanager.fileContents->size() in&#xD;
+let l = viewport.viewContents->size() in&#xD;
+let Cv=(scrollbar.handlePosition.div(viewport.height)*(L-l)) in&#xD;
+let Vc=viewport.viewContents->asSequence() in&#xD;
+let Fc=filemanager.fileContents->asSequence() in&#xD;
+l &lt;= L and Cv >= 0 and Cv &lt; (L-l) and Vc=Fc->subSequence(Cv,Cv+l)</body>
+      </specification>
+    </ownedRule>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_spIfMJz2EeqekI-obtrxDA" memberEnd="_spK7cJz2EeqekI-obtrxDA _spMJkJz2EeqekI-obtrxDA" navigableOwnedEnd="_spMJkJz2EeqekI-obtrxDA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_spKUYJz2EeqekI-obtrxDA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_spKUYZz2EeqekI-obtrxDA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_spMJkJz2EeqekI-obtrxDA" name="viewcontents" type="_pDBUIJz2EeqekI-obtrxDA" association="_spIfMJz2EeqekI-obtrxDA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_spK7cJz2EeqekI-obtrxDA" name="viewport" type="_xZKSoJvYEeqoS4YkuFKu2A" association="_spIfMJz2EeqekI-obtrxDA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_vOpI4Jz2EeqekI-obtrxDA" memberEnd="_vOqXApz2EeqekI-obtrxDA _vOrlIpz2EeqekI-obtrxDA" navigableOwnedEnd="_vOqXApz2EeqekI-obtrxDA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vOqXAJz2EeqekI-obtrxDA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vOqXAZz2EeqekI-obtrxDA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_vOrlIpz2EeqekI-obtrxDA" name="viewcontents" type="_pDBUIJz2EeqekI-obtrxDA" association="_vOpI4Jz2EeqekI-obtrxDA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_vOqXApz2EeqekI-obtrxDA" name="filemanager" type="_uh1gMJvYEeqoS4YkuFKu2A" association="_vOpI4Jz2EeqekI-obtrxDA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_x8jgoJz2EeqekI-obtrxDA" memberEnd="_x8kuwpz2EeqekI-obtrxDA _x8l84Zz2EeqekI-obtrxDA" navigableOwnedEnd="_x8kuwpz2EeqekI-obtrxDA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_x8kuwJz2EeqekI-obtrxDA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x8kuwZz2EeqekI-obtrxDA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_x8l84Zz2EeqekI-obtrxDA" name="viewcontents" type="_pDBUIJz2EeqekI-obtrxDA" association="_x8jgoJz2EeqekI-obtrxDA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_x8kuwpz2EeqekI-obtrxDA" name="scrollbar" type="_zqrCQJvYEeqoS4YkuFKu2A" association="_x8jgoJz2EeqekI-obtrxDA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_o3AmgJz4EeqekI-obtrxDA" name="HandleProportion">
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_ePawwJ18EeqekI-obtrxDA" name="HandleProportionInvariant">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_ePhecJ18EeqekI-obtrxDA" name="constraintSpec">
+        <language>OCL</language>
+        <body>viewport.visibleLinesNumber/filemanager.fileContents->size() &lt;= 1</body>
+      </specification>
+    </ownedRule>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_0h78kJz4EeqekI-obtrxDA" name="filemanager" type="_uh1gMJvYEeqoS4YkuFKu2A" association="_0h6HYJz4EeqekI-obtrxDA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_2BPMIZz4EeqekI-obtrxDA" name="viewport" type="_xZKSoJvYEeqoS4YkuFKu2A" association="_2BN-AJz4EeqekI-obtrxDA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_wEBm0Jz4EeqekI-obtrxDA" memberEnd="_wEC08pz4EeqekI-obtrxDA _wESskJz4EeqekI-obtrxDA" navigableOwnedEnd="_wESskJz4EeqekI-obtrxDA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wEC08Jz4EeqekI-obtrxDA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wEC08Zz4EeqekI-obtrxDA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wESskJz4EeqekI-obtrxDA" name="handleproportion" type="_o3AmgJz4EeqekI-obtrxDA" association="_wEBm0Jz4EeqekI-obtrxDA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wEC08pz4EeqekI-obtrxDA" name="scrollbar" type="_zqrCQJvYEeqoS4YkuFKu2A" association="_wEBm0Jz4EeqekI-obtrxDA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_0h6HYJz4EeqekI-obtrxDA" memberEnd="_0h78kJz4EeqekI-obtrxDA _0h9KsJz4EeqekI-obtrxDA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0h7VgJz4EeqekI-obtrxDA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0h7VgZz4EeqekI-obtrxDA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_0h9KsJz4EeqekI-obtrxDA" name="handleproportion" type="_o3AmgJz4EeqekI-obtrxDA" association="_0h6HYJz4EeqekI-obtrxDA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_2BN-AJz4EeqekI-obtrxDA" memberEnd="_2BPMIZz4EeqekI-obtrxDA _2BQaQJz4EeqekI-obtrxDA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2BOlEJz4EeqekI-obtrxDA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2BPMIJz4EeqekI-obtrxDA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_2BQaQJz4EeqekI-obtrxDA" name="handleproportion" type="_o3AmgJz4EeqekI-obtrxDA" association="_2BN-AJz4EeqekI-obtrxDA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_pBOVoJz8EeqekI-obtrxDA" memberEnd="_pBT1MZz8EeqekI-obtrxDA _pBVDUZz8EeqekI-obtrxDA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pBTOIJz8EeqekI-obtrxDA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pBT1MJz8EeqekI-obtrxDA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pBVDUZz8EeqekI-obtrxDA" name="scrollbar" type="_zqrCQJvYEeqoS4YkuFKu2A" aggregation="shared" association="_pBOVoJz8EeqekI-obtrxDA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4G57UJz8EeqekI-obtrxDA"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pBT1MZz8EeqekI-obtrxDA" name="viewport" type="_xZKSoJvYEeqoS4YkuFKu2A" association="_pBOVoJz8EeqekI-obtrxDA"/>
+  </packagedElement>
+</uml:Model>
